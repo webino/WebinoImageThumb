@@ -99,7 +99,7 @@
   * `adaptiveResizeQuadrant($width, $height, $quadrant = 'T|B|C|L|R')`
   * `crop($startX, $startY, $cropWidth, $cropHeight)`
   * `cropFromCenter($cropWidth, $cropHeight = null)`
-  * `pad($width, $height, $color=array(255, 255, 255))`
+  * `pad($width, $height, $color = array(255, 255, 255))`
   * `resize($maxWidth, $maxHeight)`
   * `resizePercent($percent)`
   * `rotateImage($direction = 'CW|CCW')`
@@ -137,7 +137,7 @@
   * `setPercent($percent)`
   * `setWorkingImage($workingImage)`
 
-# Reflection plugin
+## Reflection plugin
 
   * `createReflection($percent, $reflection, $white, $border = true, $borderColor = '#a4a4a4')`
 
