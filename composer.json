@@ -1,0 +1,40 @@
+{
+    "name": "webino/webino-image-thumb",
+    "description": "Image Thumbnailer for Zend Framework.",
+    "type": "library",
+    "keywords": [
+        "webino", "image", "thumb", "zf2", "zend", "framework"
+    ],
+    "homepage": "https://github.com/webino/WebinoImageThumb",
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "Ian Selby",
+            "email": "ian@gxdlabs.com",
+            "homepage": "http://www.gen-x-design.com/",
+            "role": "Developer"
+        },
+        {
+            "name": "Peter Bačinský",
+            "email": "peter@bacinsky.sk",
+            "homepage": "http://www.bacinsky.sk/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    },
+    "suggest": {
+        "webino/WebinoDraw": "XHTML Layout Renderer for Zend Framework.",
+        "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
+    },
+    "autoload": {
+        "psr-0": {
+            "WebinoImageThumb": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    }
+}
