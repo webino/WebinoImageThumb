@@ -1,5 +1,8 @@
 # Image Thumbnailer for Zend Framework
 
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=master)](http://travis-ci.org/webino/WebinoImageThumb "Master")
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop")
+
   Service that provide API to manipulate images.
 
   Powered by [PHPThumb](https://github.com/masterexploder/PHPThumb)
