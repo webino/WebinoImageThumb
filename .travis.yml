@@ -9,6 +9,7 @@ before_script:
   - cd ._test/ZendSkeletonApplication
   - php composer.phar self-update
   - php composer.phar install
+  - cp ../../composer.json composer.json
   - cp ../../test/resources/application.config.php config/application.config.php
 
 script:
