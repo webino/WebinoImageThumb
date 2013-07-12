@@ -9,32 +9,29 @@
     "license": "New BSD License",
     "authors": [
         {
-            "name": "Ian Selby",
-            "email": "ian@gxdlabs.com",
-            "homepage": "http://www.gen-x-design.com/",
-            "role": "Developer"
-        },
-        {
             "name": "Peter Bačinský",
             "email": "peter@bacinsky.sk",
             "homepage": "http://www.bacinsky.sk/",
             "role": "Developer"
         }
     ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/masterexploder/PHPThumb"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*"
+        "zendframework/zendframework": "2.*",
+        "masterexploder/PHPThumb": "2.0.x-dev"
     },
     "suggest": {
-        "webino/WebinoDraw": "XHTML Layout Renderer for Zend Framework.",
-        "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
     },
     "autoload": {
         "psr-0": {
             "WebinoImageThumb": "src/"
-        },
-        "classmap": [
-            "Module.php"
-        ]
+        }
     }
 }

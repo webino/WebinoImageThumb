@@ -1,0 +1,15 @@
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <php>
+        <includePath>../._test/ZendSkeletonApplication/vendor</includePath>
+    </php>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>../src</directory>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="WebinoImageThumb Test Suite">
+            <directory>./</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
