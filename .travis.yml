@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+
+before_script:
+  - git clone git://github.com/zendframework/ZendSkeletonApplication.git ._test/ZendSkeletonApplication
+  - cd ._test/ZendSkeletonApplication
+  - php composer.phar self-update
+  - php composer.phar install
+  - cp ../../test/resources/application.config.php config/application.config.php
+
+script:
+  - cd ../../test
+  - phpunit

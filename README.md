@@ -13,7 +13,7 @@
 
   Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
 
-  1. Run: `php composer.phar require webino/webino-image-thumb:1.*`
+  1. Run: `php composer.phar require webino/webino-image-thumb:2.*`
   2. Add `WebinoImageThumb` to the enabled modules list.
 
 ## Requirements
@@ -25,7 +25,7 @@
   - For example add following code to controller action, assume example image:
 
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
-        $thumb       = $thumbnailer->create('public/images/example.jpg', $options = array());
+        $thumb       = $thumbnailer->create('public/images/example.jpg', $options = array(), $plugins = array());
 
         $thumb->resize(100, 100);
 
@@ -35,7 +35,8 @@
 
   - Use reflection plugin:
 
-        $thumb->createReflection(40, 40, 80, true, '#a4a4a4');
+        $reflection = $thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
+        $thumb      = $thumbnailer->create('public/images/example.jpg', array(), array($reflection));
 
 ## Options
 
@@ -90,6 +91,12 @@
         <td><code>array(255,255,255)</code></td>
         <td><code>array([0-255], [0-255], [0-255])</code></td>
     </tr>
+    <tr>
+        <td>interlace</td>
+        <td>When the interlace option equals true or false call imageinterlace</td>
+        <td><code>null</code></td>
+        <td><code>true / false</code></td>
+    </tr>
 </table>
 
 ## Functions
@@ -110,28 +117,22 @@
 ## Getters / Setters
 
   * `getCurrentDimensions()`
-  * `getErrorMessage()`
   * `getFileName()`
   * `getFormat()`
-  * `getHasError()`
-  * `getImportedFunctions()`
+  * `getIsRemoteImage()`
   * `getMaxHeight()`
   * `getMaxWidth()`
   * `getNewDimensions()`
-  * `getNewImage()`
   * `getOldImage()`
   * `getOptions()`
   * `getPercent()`
   * `getWorkingImage()`
   * `setCurrentDimensions($currentDimensions)`
-  * `setErrorMessage($errorMessage)`
   * `setFileName($fileName)`
   * `setFormat($format)`
-  * `setHasError($hasError)`
   * `setMaxHeight($maxHeight)`
   * `setMaxWidth($maxWidth)`
   * `setNewDimensions($newDimensions)`
-  * `setNewImage($newImage)`
   * `setOldImage($oldImage)`
   * `setOptions($options)`
   * `setPercent($percent)`
@@ -139,13 +140,57 @@
 
 ## Reflection plugin
 
-  * `createReflection($percent, $reflection, $white, $border = true, $borderColor = '#a4a4a4')`
+  * `createReflection($percent, $reflection, $white, $border, $borderColor)`
 
     * `$percent` - What percentage of the image to create the reflection from.
     * `$reflection` - What percentage of the image height should the reflection height be.
     * `$white` - How transparent (using white as the background) the reflection should be, as a percent.
     * `$border` - Whether a border should be drawn around the original image.
     * `$borderColor` - The hex value of the color you would like your border to be.
+
+## Changelog
+
+### 2.0.0
+
+  - Requires PHPThumb 2.0 via composer
+
+### 1.0.0
+
+  - Initial release
+
+## Develop
+
+### Requirements
+
+  - Linux (recommended)
+  - NetBeans (optional)
+  - Phing
+  - PHPUnit
+  - Selenium
+  - Web browser
+
+### Setup
+
+  1. Clone this repository and run: `phing update`
+
+     Now your development environment is set.
+
+  2. Open project in (NetBeans) IDE
+
+  3. To check module integration with the skeleton application open following directory via web browser:
+
+  `._test/ZendSkeletonApplication/public/`
+
+     e.g. [http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/](http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/)
+
+  4. Integration test resources are in directory: `test/resources`
+
+### Testing
+
+  - Run `phpunit` in the test directory
+  - Run `phing test` in the module directory to run the tests and code insights
+
+    *NOTE: To run the code insights there are some tool requirements.*
 
 ## Addendum
 
