@@ -17,10 +17,7 @@
     ],
     "minimum-stability": "dev",
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/masterexploder/PHPThumb"
-        }
+        { "type": "vcs", "url": "https://github.com/masterexploder/PHPThumb" }
     ],
     "require": {
         "php": ">=5.3.3",

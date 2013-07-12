@@ -16,8 +16,9 @@
 
   Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
 
-  1. Run: `php composer.phar require webino/webino-image-thumb:2.*`
-  2. Add `WebinoImageThumb` to the enabled modules list.
+  1. Add a repository to the composer.json: `{ "type": "vcs", "url": "https://github.com/masterexploder/PHPThumb" }` // TODO
+  2. Run: `php composer.phar require webino/webino-image-thumb:2.*`
+  3. Add `WebinoImageThumb` to the enabled modules list.
 
 ## Requirements
 
@@ -195,6 +196,10 @@
   - Run `phing test` in the module directory to run the tests and code insights
 
     *NOTE: To run the code insights there are some tool requirements.*
+
+## Todo
+
+  - Couldn't finish until the PHPThumb 2.0 released and published via packagist.org
 
 ## Addendum
 
