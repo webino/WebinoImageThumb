@@ -7,9 +7,9 @@ php:
 before_script:
   - git clone git://github.com/zendframework/ZendSkeletonApplication.git ._test/ZendSkeletonApplication
   - cd ._test/ZendSkeletonApplication
+  - cp ../../composer.json composer.json
   - php composer.phar self-update
   - php composer.phar install
-  - cp ../../composer.json composer.json
   - cp ../../test/resources/application.config.php config/application.config.php
 
 script:
