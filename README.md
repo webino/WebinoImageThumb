@@ -25,7 +25,8 @@
   - For example add following code to controller action, assume example image:
 
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
-        $thumb       = $thumbnailer->create('public/images/example.jpg', $options = array(), $plugins = array());
+        $imagePath   = 'public/images/example.jpg';
+        $thumb       = $thumbnailer->create($imagePath, $options = array(), $plugins = array());
 
         $thumb->resize(100, 100);
 
@@ -36,7 +37,7 @@
   - Use reflection plugin:
 
         $reflection = $thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
-        $thumb      = $thumbnailer->create('public/images/example.jpg', array(), array($reflection));
+        $thumb      = $thumbnailer->create($imagePath, array(), array($reflection));
 
 ## Options
 
