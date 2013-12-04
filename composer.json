@@ -1,6 +1,6 @@
 {
     "name": "webino/webino-image-thumb",
-    "description": "Image Thumbnailer for Zend Framework.",
+    "description": "Image Thumbnailer for Zend Framework 2",
     "type": "library",
     "keywords": [
         "webino", "image", "thumb", "zf2", "zend", "framework"
@@ -16,15 +16,23 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories": [
-        { "type": "vcs", "url": "https://github.com/masterexploder/PHPThumb" }
-    ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*",
         "masterexploder/PHPThumb": "2.*"
     },
     "suggest": {
+        "zendframework/zend-modulemanager": "To use it as Zend Framework module"
+    },
+    "require-dev": {
+        "apigen/apigen": "2.*",
+        "mayflower/php-codebrowser": "*",
+        "pdepend/pdepend": "1.*",
+        "phploc/phploc": "*",
+        "phpmd/phpmd": "1.*",
+        "phpunit/phpunit": "3.7.*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "1.*",
+        "zendframework/zendframework": "2.*"
     },
     "autoload": {
         "psr-0": {
