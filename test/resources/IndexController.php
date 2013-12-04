@@ -49,9 +49,7 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
-        $this->thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         $image = __DIR__ . '/test.jpg';
-
         $thumb = $this->thumbnailer->create(
             $image, array(), array($this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4'))
         );
