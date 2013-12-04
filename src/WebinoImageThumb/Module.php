@@ -9,10 +9,17 @@
 
 namespace WebinoImageThumb;
 
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
 /**
+ * WebinoImageThumb Module for Zend Framework 2
+ *
  * @author Peter Bačinský <peter@bacinsky.sk>
  */
-class Module
+class Module implements
+    AutoloaderProviderInterface,
+    ConfigProviderInterface
 {
     /**
      * @return array
