@@ -17,6 +17,8 @@ return array (
   array (
     'supertypes' => 
     array (
+      0 => 'Zend\\ModuleManager\\Feature\\AutoloaderProviderInterface',
+      1 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
