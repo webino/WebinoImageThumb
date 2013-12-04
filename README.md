@@ -1,4 +1,4 @@
-# Image Thumbnailer for Zend Framework 2
+# Image Thumbnailer <br /> for Zend Framework 2
 
   [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=master)](http://travis-ci.org/webino/WebinoImageThumb "Master")
   [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop")
@@ -38,7 +38,7 @@
         // or/and
         $thumb->save('public/images/resized.jpg');
 
-    *NOTE: If you don't know how to inject the WebinoImageThumb into action controller, check out `test/resources`.*
+    *NOTE: If you don't know how to inject the WebinoImageThumb into action controller, check out `test/resources`*
 
   - Use reflection plugin:
 
