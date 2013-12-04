@@ -7,6 +7,9 @@
  * @license   New BSD License
  */
 
+// Overrdides application controller
+require __DIR__ . '/../IndexController.php';
+
 /**
  * WebinoImageThumb application test config
  *
