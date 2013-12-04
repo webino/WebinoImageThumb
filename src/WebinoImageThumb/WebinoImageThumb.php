@@ -13,6 +13,8 @@ use PHPThumb\Plugins;
 use PHPThumb\GD as PHPThumb;
 
 /**
+ * WebinoImageThumb service
+ *
  * Image thumbnailer powered by PHPThumb (https://github.com/masterexploder/PHPThumb)
  *
  * @author Peter Bačinský <peter@bacinsky.sk>
@@ -34,6 +36,7 @@ class WebinoImageThumb
         } catch (\Exception $exc) {
             throw new Exception\RuntimeException($exc->getMessage(), $exc->getCode(), $exc);
         }
+        
         return $thumb;
     }
 
