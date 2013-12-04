@@ -21,7 +21,7 @@
         "masterexploder/PHPThumb": "2.*"
     },
     "suggest": {
-        "zendframework/zend-modulemanager": "To use it as Zend Framework module"
+        "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
         "apigen/apigen": "2.*",
@@ -30,6 +30,7 @@
         "phploc/phploc": "*",
         "phpmd/phpmd": "1.*",
         "phpunit/phpunit": "3.7.*",
+        "satooshi/php-coveralls": "0.*",
         "sebastian/phpcpd": "*",
         "squizlabs/php_codesniffer": "1.*",
         "zendframework/zendframework": "2.*"

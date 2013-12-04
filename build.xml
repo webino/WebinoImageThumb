@@ -7,15 +7,6 @@
 
     </target>
 
-    <target name="prepare">
-        <echo>Preparing ...</echo>
-        <delete dir="${log.basedir}"/>
-        <mkdir dir="${log.basedir}"/>
-        <mkdir dir="${log.coveragedir}"/>
-        <mkdir dir="${log.apidir}"/>
-        <mkdir dir="${log.codebrowserdir}"/>
-    </target>
-
     <target name="pull">
         <echo>Pulling sources ...</echo>
         <exec command="git submodule init" checkreturn="true" logoutput="true"/>
@@ -24,7 +15,7 @@
         <phingCall target="update"/>
     </target>
 
-    <target name="update" depends="prepare">
+    <target name="update">
         <echo>Updating ...</echo>
         <if>
             <available file="${module.gitprecommit}" type="file" />
@@ -62,24 +53,30 @@
 
         <delete file="${test.appcfg}"/>
         <exec command="ln -s ${test.apptestcfg} ${test.appcfg}" checkreturn="true" logoutput="true"/>
-<!--        <exec command="ln -s ${test.modulecfg} ${test.moduletestcfg}" checkreturn="true" logoutput="true"/>-->
-
-        <delete file="${test.appcontroller}"/>
-        <exec command="ln -s ${test.apptestcontroller} ${test.appcontroller}" checkreturn="true" logoutput="true"/>
     </target>
 
-    <target name="test">
+    <target name="test" depends="clear-log">
         <echo>Testing ...</echo>
         <exec command="${module.vendorbindir}/phpunit -c ${module.testdir} --coverage-html ${log.coveragedir} --testdox-html ${log.basedir}/testdox.html --coverage-clover ${log.basedir}/clover.xml --log-junit ${log.basedir}/junit.xml" checkreturn="true" logoutput="true"/>
-
+        <echo>Checking coding style ...</echo>
+        <exec command="${module.vendorbindir}/phpcs -v --report=checkstyle --report-file=${log.basedir}/checkstyle.xml --standard=${project.checkstyle} --extensions=php ${module.srcdir} ${module.testdir}" checkreturn="true" logoutput="true"/>
         <echo>Analysing code ...</echo>
-        <exec command="${module.vendorbindir}/phpcs --report=checkstyle --report-file=${log.basedir}/checkstyle.xml --standard=${project.checkstyle} --extensions=php ${module.srcdir}" logoutput="true"/>
         <exec command="${module.vendorbindir}/phpmd ${module.srcdir} xml codesize,design,naming,unusedcode --reportfile ${log.basedir}/phpmd.xml" logoutput="true" />
         <exec command="${module.vendorbindir}/phpcpd --log-pmd ${log.basedir}/pmd-cpd.xml ${module.srcdir}" logoutput="true" />
         <exec command="${module.vendorbindir}/phploc --log-csv ${log.basedir}/phploc.csv ${module.srcdir}*" logoutput="true" />
         <exec command="${module.vendorbindir}/pdepend --summary-xml=${log.basedir}/pdepend.xml --jdepend-xml=${log.basedir}/jdepend.xml --jdepend-chart=${log.basedir}/dependencies.svg --overview-pyramid=${log.basedir}/overview-pyramid.svg ${module.srcdir}" logoutput="true"/>
         <exec command="${module.vendorbindir}/phpcb --log ${log.basedir} --source ${module.srcdir} --output ${log.codebrowserdir}" logoutput="true"/>
+        <echo>Generating documentation ...</echo>
         <exec command="${module.vendorbindir}/apigen.php --source ${module.srcdir} --destination ${log.apidir}" logoutput="true"/>
+    </target>
+
+    <target name="clear-log">
+        <echo>Clearing log ...</echo>
+        <delete dir="${log.basedir}"/>
+        <mkdir  dir="${log.basedir}"/>
+        <mkdir  dir="${log.coveragedir}"/>
+        <mkdir  dir="${log.apidir}"/>
+        <mkdir  dir="${log.codebrowserdir}"/>
     </target>
 
     <target name="get-composer">
