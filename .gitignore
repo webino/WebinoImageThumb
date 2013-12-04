@@ -6,7 +6,6 @@ nbproject/private
 .idea
 .project
 .settings
-vendor
 composer.lock
 composer.phar
 !.gitignore
