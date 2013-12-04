@@ -1,0 +1,15 @@
+<phpunit bootstrap="bootstrap.php" colors="true">
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>../src</directory>
+            <exclude>
+                <file>../src/WebinoImageThumb/autoload_classmap.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="WebinoImageThumb Test Suite">
+            <directory>.</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

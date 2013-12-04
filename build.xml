@@ -1,0 +1,119 @@
+<!-- phing -->
+<project default="build" basedir=".">
+
+    <property file="${project.basedir}/build.properties" />
+
+    <target name="build" depends="update,test">
+
+    </target>
+
+    <target name="prepare">
+        <echo>Preparing ...</echo>
+        <delete dir="${log.basedir}"/>
+        <mkdir dir="${log.basedir}"/>
+        <mkdir dir="${log.coveragedir}"/>
+        <mkdir dir="${log.apidir}"/>
+        <mkdir dir="${log.codebrowserdir}"/>
+    </target>
+
+    <target name="pull">
+        <echo>Pulling sources ...</echo>
+        <exec command="git submodule init" checkreturn="true" logoutput="true"/>
+        <exec command="git submodule update" checkreturn="true" logoutput="true"/>
+        <exec command="git pull ${project.remote} ${project.branch}" checkreturn="true" logoutput="true"/>
+        <phingCall target="update"/>
+    </target>
+
+    <target name="update" depends="prepare">
+        <echo>Updating ...</echo>
+        <if>
+            <available file="${module.gitprecommit}" type="file" />
+            <then>
+                <echo>Pre-commit hook OK ...</echo>
+            </then>
+            <else>
+                <echo>Installing pre-commit hook ...</echo>
+                <exec command="ln -s ${module.precommit} ${module.gitprecommit}" checkreturn="true" logoutput="true"/>
+                <exec command="chmod +x ${module.precommit}" checkreturn="true" logoutput="true"/>
+            </else>
+        </if>
+
+        <phingCall target="get-composer"/>
+
+        <echo>Getting latest ${test.appname}</echo>
+        <if>
+            <available file="${test.appdir}" type="dir" />
+            <then>
+                <echo>Pulling ...</echo>
+                <exec command="cd ${test.appdir} &amp;&amp; git reset HEAD --hard" checkreturn="true" logoutput="true"/>
+                <exec command="cd ${test.appdir} &amp;&amp; git clean -f -d -x" checkreturn="true" logoutput="true"/>
+                <exec command="cd ${test.appdir} &amp;&amp; git pull ${test.appremote} ${test.appbranch}" checkreturn="true" logoutput="true"/>
+            </then>
+            <else>
+                <echo>Clonning ...</echo>
+                <exec command="git clone ${test.appgit} ${test.appdir}" checkreturn="true" logoutput="true"/>
+            </else>
+        </if>
+
+        <echo>Updating ...</echo>
+        <delete dir="${test.vendorbasedir}"/>
+        <exec command="ln -s ${module.vendordir} ${test.vendorbasedir}" checkreturn="true" logoutput="true"/>
+        <exec command="cd ${project.basedir} &amp;&amp; php composer.phar update --dev --no-interaction" checkreturn="true" logoutput="true"/>
+
+        <delete file="${test.appcfg}"/>
+        <exec command="ln -s ${test.apptestcfg} ${test.appcfg}" checkreturn="true" logoutput="true"/>
+<!--        <exec command="ln -s ${test.modulecfg} ${test.moduletestcfg}" checkreturn="true" logoutput="true"/>-->
+
+        <delete file="${test.appcontroller}"/>
+        <exec command="ln -s ${test.apptestcontroller} ${test.appcontroller}" checkreturn="true" logoutput="true"/>
+    </target>
+
+    <target name="test">
+        <echo>Testing ...</echo>
+        <exec command="${module.vendorbindir}/phpunit -c ${module.testdir} --coverage-html ${log.coveragedir} --testdox-html ${log.basedir}/testdox.html --coverage-clover ${log.basedir}/clover.xml --log-junit ${log.basedir}/junit.xml" checkreturn="true" logoutput="true"/>
+
+        <echo>Analysing code ...</echo>
+        <exec command="${module.vendorbindir}/phpcs --report=checkstyle --report-file=${log.basedir}/checkstyle.xml --standard=${project.checkstyle} --extensions=php ${module.srcdir}" logoutput="true"/>
+        <exec command="${module.vendorbindir}/phpmd ${module.srcdir} xml codesize,design,naming,unusedcode --reportfile ${log.basedir}/phpmd.xml" logoutput="true" />
+        <exec command="${module.vendorbindir}/phpcpd --log-pmd ${log.basedir}/pmd-cpd.xml ${module.srcdir}" logoutput="true" />
+        <exec command="${module.vendorbindir}/phploc --log-csv ${log.basedir}/phploc.csv ${module.srcdir}*" logoutput="true" />
+        <exec command="${module.vendorbindir}/pdepend --summary-xml=${log.basedir}/pdepend.xml --jdepend-xml=${log.basedir}/jdepend.xml --jdepend-chart=${log.basedir}/dependencies.svg --overview-pyramid=${log.basedir}/overview-pyramid.svg ${module.srcdir}" logoutput="true"/>
+        <exec command="${module.vendorbindir}/phpcb --log ${log.basedir} --source ${module.srcdir} --output ${log.codebrowserdir}" logoutput="true"/>
+        <exec command="${module.vendorbindir}/apigen.php --source ${module.srcdir} --destination ${log.apidir}" logoutput="true"/>
+    </target>
+
+    <target name="get-composer">
+        <echo>Getting latest composer</echo>
+        <if>
+            <available file="${project.basedir}/composer.phar" type="file" />
+            <then>
+                <echo>Updating ...</echo>
+                <exec command="cd ${project.basedir} &amp;&amp; php composer.phar self-update" checkreturn="true" logoutput="true"/>
+            </then>
+            <else>
+                <echo>Downloading ...</echo>
+                <exec command="cd ${project.basedir} &amp;&amp; curl -sS https://getcomposer.org/installer | php" checkreturn="true" logoutput="true"/>
+            </else>
+        </if>
+    </target>
+
+    <target name="classmap">
+        <echo>Generating classmap ...</echo>
+        <exec command="php ${module.vendorbindir}/classmap_generator.php -l ${module.srcdir}/${project.name}" checkreturn="true" logoutput="true"/>
+    </target>
+
+    <target name="didef" description="Generates the DI definition">
+        <echo>Generating DI definition ...</echo>
+        <exec command="php ${module.bindir}/definition_generator.php"/>
+    </target>
+
+    <target name="pre-commit">
+        <echo>Triggering pre-commit hook ...</echo>
+        <phingCall target="classmap"/>
+        <phingCall target="didef"/>
+        <phingCall target="test"/>
+        <exec command="cd ${project.basedir} &amp;&amp; git add ${module.srcdir}/${project.name}/autoload_classmap.php"/>
+        <exec command="cd ${project.basedir} &amp;&amp; git add ${project.basedir}/data/di"/>
+    </target>
+
+</project>

@@ -1,4 +1,4 @@
-nbproject
+nbproject/private
 ._*
 .~lock.*
 .buildpath
@@ -7,4 +7,5 @@ nbproject
 .project
 .settings
 composer.lock
+composer.phar
 !.gitignore

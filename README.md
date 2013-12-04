@@ -1,20 +1,23 @@
-# Image Thumbnailer for Zend Framework
+# Image Thumbnailer for Zend Framework 2
 
-  Service that provide API to manipulate images.
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=master)](http://travis-ci.org/webino/WebinoImageThumb "Master")
+  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop")
+
+  Service that provides API to manipulate images.
 
   Powered by [PHPThumb](https://github.com/masterexploder/PHPThumb)
 
 ## Features
 
-  - Resize, crop, pad, rotate, show and save images.
-  - Create image reflection.
+  - Resize, crop, pad, rotate, show and save images
+  - Create image reflection
 
 ## Setup
 
   Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
 
-  1. Run: `php composer.phar require webino/webino-image-thumb:1.*`
-  2. Add `WebinoImageThumb` to the enabled modules list.
+  1. Run: `php composer.phar require webino/webino-image-thumb:2.*`
+  3. Add `WebinoImageThumb` to the enabled modules list
 
 ## Requirements
 
@@ -22,10 +25,12 @@
 
 ## QuickStart
 
-  - For example add following code to controller action, assume example image:
+  - For example add following code into the controller action, assume example image:
 
+        // We encourage to use Dependency Injection instead of Service Locator
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
-        $thumb       = $thumbnailer->create('public/images/example.jpg', $options = array());
+        $imagePath   = 'public/images/example.jpg';
+        $thumb       = $thumbnailer->create($imagePath, $options = array(), $plugins = array());
 
         $thumb->resize(100, 100);
 
@@ -33,13 +38,16 @@
         // or/and
         $thumb->save('public/images/resized.jpg');
 
+    *NOTE: If you don't know how to inject the WebinoImageThumb into action controller, check out `test/resources`.*
+
   - Use reflection plugin:
 
-        $thumb->createReflection(40, 40, 80, true, '#a4a4a4');
+        $reflection = $thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
+        $thumb      = $thumbnailer->create($imagePath, array(), array($reflection));
 
 ## Options
 
- The options array allows you to customize the behavior of the library a bit.  Some of these options are implementation-specific, and are noted as such.  So, let's first go over what options are available to us:
+ The options array allows you to customize the behavior of the library a bit. Some of these options are implementation-specific, and are noted as such.  So, let's first go over what options are available to us:
 
 <table>
     <tr>
@@ -90,6 +98,12 @@
         <td><code>array(255,255,255)</code></td>
         <td><code>array([0-255], [0-255], [0-255])</code></td>
     </tr>
+    <tr>
+        <td>interlace</td>
+        <td>When the interlace option equals true or false call imageinterlace</td>
+        <td><code>null</code></td>
+        <td><code>true / false</code></td>
+    </tr>
 </table>
 
 ## Functions
@@ -110,28 +124,22 @@
 ## Getters / Setters
 
   * `getCurrentDimensions()`
-  * `getErrorMessage()`
   * `getFileName()`
   * `getFormat()`
-  * `getHasError()`
-  * `getImportedFunctions()`
+  * `getIsRemoteImage()`
   * `getMaxHeight()`
   * `getMaxWidth()`
   * `getNewDimensions()`
-  * `getNewImage()`
   * `getOldImage()`
   * `getOptions()`
   * `getPercent()`
   * `getWorkingImage()`
   * `setCurrentDimensions($currentDimensions)`
-  * `setErrorMessage($errorMessage)`
   * `setFileName($fileName)`
   * `setFormat($format)`
-  * `setHasError($hasError)`
   * `setMaxHeight($maxHeight)`
   * `setMaxWidth($maxWidth)`
   * `setNewDimensions($newDimensions)`
-  * `setNewImage($newImage)`
   * `setOldImage($oldImage)`
   * `setOptions($options)`
   * `setPercent($percent)`
@@ -139,13 +147,67 @@
 
 ## Reflection plugin
 
-  * `createReflection($percent, $reflection, $white, $border = true, $borderColor = '#a4a4a4')`
+  * `createReflection($percent, $reflection, $white, $border, $borderColor)`
 
     * `$percent` - What percentage of the image to create the reflection from.
     * `$reflection` - What percentage of the image height should the reflection height be.
     * `$white` - How transparent (using white as the background) the reflection should be, as a percent.
     * `$border` - Whether a border should be drawn around the original image.
     * `$borderColor` - The hex value of the color you would like your border to be.
+
+## Changelog
+
+### 2.0.0
+
+  - Requires PHPThumb 2.0 via composer
+
+### 1.0.0
+
+  - Initial release
+
+## Develop
+
+### Requirements
+
+  - [Linux](http://www.ubuntu.com/download)
+  - [NetBeans](https://netbeans.org/downloads/) (optional)
+  - [Phing](http://www.phing.info/trac/wiki/Users/Download)
+  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
+  - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+  - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
+  - [Selenium](http://www.seleniumhq.org/) (optional)
+
+### Setup
+
+  1. Clone this repository and run: `phing update`
+
+     *Now your development environment is set.*
+
+  2. Open project in (NetBeans) IDE
+
+  3. To check module integration with the skeleton application open following directory via web browser:
+
+  `._test/ZendSkeletonApplication/public/`
+
+     e.g. [http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/](http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/)
+
+  4. Integration test resources are in directory: `test/resources`
+
+### Testing
+
+  - Run `phpunit` in the test directory
+  - Run `phing test` in the module directory to run tests and code analysis
+
+    *NOTE: To run the code analysis there are some tool requirements:*
+      - [apigen](http://apigen.org/##installation)
+      - [pdepend](http://pdepend.org/)
+      - [phpcb](https://github.com/Mayflower/PHP_CodeBrowser)
+      - [phpcpd](https://github.com/sebastianbergmann/phpcpd)
+      - [phpcs](http://pear.php.net/package/PHP_CodeSniffer/)
+      - [phploc](https://github.com/sebastianbergmann/phploc)
+      - [phpmd](http://phpmd.org/download/index.html)
+
+   *NOTE: Those tools are present after development environment is based.*
 
 ## Addendum
 

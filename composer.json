@@ -1,6 +1,6 @@
 {
     "name": "webino/webino-image-thumb",
-    "description": "Image Thumbnailer for Zend Framework.",
+    "description": "Image Thumbnailer for Zend Framework 2",
     "type": "library",
     "keywords": [
         "webino", "image", "thumb", "zf2", "zend", "framework"
@@ -9,32 +9,34 @@
     "license": "New BSD License",
     "authors": [
         {
-            "name": "Ian Selby",
-            "email": "ian@gxdlabs.com",
-            "homepage": "http://www.gen-x-design.com/",
-            "role": "Developer"
-        },
-        {
             "name": "Peter Bačinský",
             "email": "peter@bacinsky.sk",
             "homepage": "http://www.bacinsky.sk/",
             "role": "Developer"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*"
+        "masterexploder/PHPThumb": "2.*"
     },
     "suggest": {
-        "webino/WebinoDraw": "XHTML Layout Renderer for Zend Framework.",
-        "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
+        "zendframework/zend-modulemanager": "To use it as Zend Framework module"
+    },
+    "require-dev": {
+        "apigen/apigen": "2.*",
+        "mayflower/php-codebrowser": "*",
+        "pdepend/pdepend": "1.*",
+        "phploc/phploc": "*",
+        "phpmd/phpmd": "1.*",
+        "phpunit/phpunit": "3.7.*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "1.*",
+        "zendframework/zendframework": "2.*"
     },
     "autoload": {
         "psr-0": {
             "WebinoImageThumb": "src/"
-        },
-        "classmap": [
-            "Module.php"
-        ]
+        }
     }
 }
