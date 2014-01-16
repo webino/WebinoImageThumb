@@ -15,6 +15,11 @@
  * over the Service Locator resolution.
  */
 return array(
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\I18n\Translator\TranslatorInterface' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'home' => array(
