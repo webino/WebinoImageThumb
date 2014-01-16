@@ -8,4 +8,5 @@ nbproject/private
 .settings
 composer.lock
 composer.phar
+node_modules
 !.gitignore

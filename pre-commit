@@ -1,6 +1,6 @@
 # pre-commit
 git stash -q --keep-index
-phing pre-commit
+grunt precommit
 RESULT=$?
 env -i
 git stash pop -q

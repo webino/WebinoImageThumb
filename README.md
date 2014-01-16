@@ -178,35 +178,43 @@
 
 ## Develop
 
+This package uses Grunt task runner to automating the development.
+
 ### Requirements
 
-  - [Linux](http://www.ubuntu.com/download)
-  - [NetBeans](https://netbeans.org/downloads/) (optional)
-  - [Phing](http://www.phing.info/trac/wiki/Users/Download)
-  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
   - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+  - [Linux](http://www.ubuntu.com/download)
+  - [NetBeans](https://netbeans.org/downloads/) (recommended)
+  - [NPM](https://npmjs.org/)
+  - [Grunt](http://gruntjs.com/getting-started)
+  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
+  - [Selenium](http://www.seleniumhq.org/)
+  - [HtmlUnit](http://htmlunit.sourceforge.net/)
   - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
-  - [Selenium](http://www.seleniumhq.org/) (recommended)
 
 ### Setup
 
-  1. Clone this repository and run: `phing update`
+Setting up development environment of the package.
+
+  1. Clone this repository and run: `npm install`
+
+  2. To update development environment run: `grunt update`
 
      *Now your development environment is set.*
 
-  2. Open project in (NetBeans) IDE
+  3. Open project in (NetBeans) IDE
 
-  3. To check module integration with the skeleton application open following directory via web browser:
+  4. To check module integration with the skeleton application open following directory via web browser:
      `._test/ZendSkeletonApplication/public/`
 
-     e.g. [http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/](http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/)
+     e.g. [http://localhost/webino/WebinoImageThumb/._test/ZendSkeletonApplication/public/](http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/)
 
-  4. Integration test resources are in directory: `test/resources`
+  5. Integration test resources are in directory: `test/resources`
 
 ### Testing
 
   - Run `phpunit` in the test directory
-  - Run `phing test` in the module directory to run tests and code analysis
+  - Run `grunt test` in the module directory to run tests and code analysis
 
     *NOTE: To run the code analysis there are some tool requirements:*
       - [apigen](http://apigen.org/##installation)
@@ -219,6 +227,12 @@
 
     *NOTE: Those tools are present after development environment is based.*
 
+  - Run `grunt exec:selenium` in the module directory to run the Selenium WebDriver tests
+
+    *NOTE: To specify the testing URI set the uri option, e.g. `grunt exec:selenium -uri http://example.com/`*
+
+    *NOTE: Selenium server must be running, e.g. `java -jar selenium-server-standalone-<version-number>.jar`*
+
 ## Addendum
 
   Most of the documentation is taken from the [PHPThumb wiki](https://github.com/masterexploder/PHPThumb/wiki).
@@ -226,4 +240,3 @@
   Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.
 
 [Report a bug](https://github.com/webino/WebinoImageThumb/issues) | [Fork me](https://github.com/webino/WebinoImageThumb)
-
