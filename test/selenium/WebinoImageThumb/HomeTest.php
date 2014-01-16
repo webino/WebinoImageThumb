@@ -17,6 +17,10 @@ class HomeTest extends AbstractBase
     public function testHome()
     {
         $this->session->open($this->uri);
-        $this->assertEquals(136892, strlen($this->session->source()));
+
+        $src = $this->session->source();
+        $this->assertNotContains('Error', $src, null, true);
+        $this->assertNotContains('Exception', $src, null, true);
+        $this->assertContains('<CREATOR: gd-jpeg', $src);
     }
 }
