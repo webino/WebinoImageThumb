@@ -217,11 +217,11 @@ Setting up development environment of the package.
   - Run `grunt test` in the module directory to run tests and code analysis
 
     *NOTE: To run the code analysis there are some tool requirements:*
-      - [apigen](http://apigen.org/##installation)
       - [pdepend](http://pdepend.org/)
       - [phpcb](https://github.com/Mayflower/PHP_CodeBrowser)
       - [phpcpd](https://github.com/sebastianbergmann/phpcpd)
       - [phpcs](http://pear.php.net/package/PHP_CodeSniffer/)
+      - [phpdoc](http://www.phpdoc.org/)
       - [phploc](https://github.com/sebastianbergmann/phploc)
       - [phpmd](http://phpmd.org/download/index.html)
 

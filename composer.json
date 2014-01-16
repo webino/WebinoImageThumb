@@ -24,9 +24,9 @@
         "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
-        "apigen/apigen": "2.*",
         "mayflower/php-codebrowser": "*",
         "pdepend/pdepend": "1.*",
+        "phpdocumentor/phpdocumentor": "2.*",
         "phploc/phploc": "*",
         "phpmd/phpmd": "1.*",
         "phpunit/phpunit": "3.7.*",
