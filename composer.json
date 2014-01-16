@@ -9,6 +9,12 @@
     "license": "New BSD License",
     "authors": [
         {
+            "name": "Webino, s. r. o.",
+            "email": "info@webino.sk",
+            "homepage": "http://www.webino.sk/",
+            "role": "Developer"
+        },
+        {
             "name": "Peter Bačinský",
             "email": "peter@bacinsky.sk",
             "homepage": "http://www.bacinsky.sk/",
