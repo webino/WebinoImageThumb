@@ -1,35 +1,40 @@
 #!/usr/bin/env php
 <?php
+/**
+ * Webino (https://github.com/webino/)
+ *
+ * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
+ * @copyright Copyright (c) 2013 Webino, s. r. o. (http://webino.sk/)
+ * @license   New BSD License
+ */
+
+namespace WebinoImageThumb;
 
 use Zend\Code\Scanner\FileScanner as CodeFileScanner;
 use Zend\Di\Definition\CompilerDefinition;
 
 // Autoloader
-$vendorDirname = __DIR__ . '/../._test/ZendSkeletonApplication/vendor';
-$loader = require $vendorDirname . '/autoload.php';
-
-$loader->add('WebinoImageThumb', __DIR__ . '/../src');
+$vendorDir = __DIR__ . '/../vendor';
+$loader    = require $vendorDir . '/autoload.php';
+$loader->add(__NAMESPACE__, __DIR__ . '/../src');
 
 // Compile Di Definition
 $diCompiler = new CompilerDefinition;
-
 $diCompiler->addDirectory(__DIR__ . '/../src');
 
 foreach (array(
 
     // add files
-//    $vendorDirname . '/zendframework/zendframework/library/Zend/.php',
+//    $vendorDir . '/zendframework/zendframework/library/Zend/.php',
 
 ) as $file) {
     $diCompiler->addCodeScannerFile(new CodeFileScanner($file));
 }
 
 $diCompiler->compile();
-
 $definition = $diCompiler->toArrayDefinition()->toArray();
 
 $dir = __DIR__ . '/../data/di';
-
 is_dir($dir) or mkdir($dir);
 
 file_put_contents(
