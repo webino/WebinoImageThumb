@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
-    <title>WebinoDraw</title>
+    <title>WebinoImageThumb</title>
     <parser>
         <target>._tmp/api</target>
     </parser>
