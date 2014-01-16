@@ -24,6 +24,7 @@
         "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
+        "element-34/php-webdriver": "1.*",
         "mayflower/php-codebrowser": "*",
         "pdepend/pdepend": "1.*",
         "phpdocumentor/phpdocumentor": "2.*",
