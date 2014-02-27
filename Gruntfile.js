@@ -45,8 +45,14 @@ module.exports = function(grunt) {
             phpdoc: {
                 cmd: "vendor/bin/phpdoc.php"
             },
-            selenium: {
+            selenium_start: {
+                cmd: "sudo /etc/init.d/selenium start && sleep 5s"
+            },
+            selenium_test: {
                 cmd: "URI='" + (grunt.option('uri') || "<%= test_app_uri %>") + "' vendor/bin/phpunit -c test/selenium"
+            },
+            selenium_stop: {
+                cmd: "sudo /etc/init.d/selenium stop"
             },
             link_precommit: {
                 cmd: "ln -s <%= basedir %>/pre-commit <%= basedir %>/.git/hooks/pre-commit && chmod +x <%= basedir %>/pre-commit"
@@ -171,7 +177,7 @@ module.exports = function(grunt) {
         [
             "update",
             "test",
-            "exec:selenium",
+            "selenium_test",
             "analyze",
             "api"
         ]
@@ -199,6 +205,15 @@ module.exports = function(grunt) {
             "phplint",
             "phpunit",
             "phpcs"
+        ]
+    );
+    grunt.registerTask(
+        "selenium_test",
+        "Run Selenium tests",
+        [
+            "exec:selenium_start",
+            "exec:selenium_test",
+            "exec:selenium_stop"
         ]
     );
     grunt.registerTask(

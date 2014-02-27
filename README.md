@@ -227,11 +227,11 @@ Setting up development environment of the package.
 
     *NOTE: Those tools are present after development environment is based.*
 
-  - Run `grunt exec:selenium` in the module directory to run the Selenium WebDriver tests
+  - Run `grunt selenium_test` in the module directory to run the Selenium WebDriver tests
 
-    *NOTE: To specify the testing URI set the uri option, e.g. `grunt exec:selenium -uri http://example.com/`*
+    *NOTE: To specify the testing URI set the uri option, e.g. `grunt selenium_test -uri http://example.com/`*
 
-    *NOTE: Selenium server must be running, e.g. `java -jar selenium-server-standalone-<version-number>.jar`*
+    *NOTE: Selenium server will be started/stopped automatically, assuming `/etc/init.d/selenium` is available to run.*
 
 ## Addendum
 
