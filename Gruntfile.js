@@ -7,6 +7,9 @@ module.exports = function(grunt) {
             log: {
                 src: ["._log"]
             },
+            api: {
+                src: ["._api"]
+            },
             test_app_vendor: {
                 src: ["._test/ZendSkeletonApplication/vendor"]
             },
@@ -19,7 +22,6 @@ module.exports = function(grunt) {
                 options: {
                     create: [
                         "._log",
-                        "._log/api",
                         "._log/code-browser",
                         "._log/coverage"
                     ]
@@ -102,7 +104,7 @@ module.exports = function(grunt) {
                 bin: "vendor/bin/phpunit",
                 coverageHtml: "<%= basedir %>/._log/coverage",
                 testdoxHtml: "<%= basedir %>/._log/testdox.html",
-                coverageClover: "<%= basedir %>/._log/clover.html",
+                coverageClover: "<%= basedir %>/._log/clover.xml",
                 logJunit: "<%= basedir %>/._log/junit.xml",
                 colors: true
             },
@@ -114,7 +116,7 @@ module.exports = function(grunt) {
                 extensions: "php",
                 bin: "vendor/bin/phpcs",
                 report: "checkstyle",
-                reportFile: "._log/checkstyle.html",
+                reportFile: "._log/checkstyle.xml",
                 verbose: true
             },
             package: {dir: ["src", "test"]}
@@ -125,7 +127,7 @@ module.exports = function(grunt) {
                 rulesets: "codesize,design,naming,unusedcode",
                 reportFile: "._log/phpmd.xml"
             },
-            package: {dir: "src/<%= pkg.name %>"}
+            package: {dir: "src"}
         },
         phpcpd: {
             options: {
@@ -221,6 +223,7 @@ module.exports = function(grunt) {
         "Analyze the code",
         [
             "phpmd",
+            "phpcpd",
             "exec:phploc",
             "exec:pdepend",
             "exec:phpcb",
@@ -230,7 +233,10 @@ module.exports = function(grunt) {
     grunt.registerTask(
         "api",
         "Generate API",
-        ["exec:phpdoc"]
+        [
+            "clean:api",
+            "exec:phpdoc"
+        ]
     );
     grunt.registerTask(
         "precommit:init",

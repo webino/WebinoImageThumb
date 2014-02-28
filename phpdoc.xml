@@ -5,7 +5,7 @@
         <target>._tmp/api</target>
     </parser>
     <transformer>
-        <target>._log/api</target>
+        <target>._api</target>
     </transformer>
     <logging>
         <level>warn</level>
@@ -19,5 +19,6 @@
     </transformations>
     <files>
         <directory>src</directory>
+        <ignore>src/*/autoload_classmap.php</ignore>
     </files>
 </phpdoc>
