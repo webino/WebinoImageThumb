@@ -6,22 +6,21 @@
         "webino", "image", "thumb", "zf2", "zend", "framework"
     ],
     "homepage": "https://github.com/webino/WebinoImageThumb",
-    "license": "New BSD License",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Webino, s. r. o.",
             "email": "info@webino.sk",
-            "homepage": "http://www.webino.sk/",
+            "homepage": "http://webino.sk",
             "role": "Developer"
         },
         {
             "name": "Peter Bačinský",
             "email": "peter@bacinsky.sk",
-            "homepage": "http://www.bacinsky.sk/",
+            "homepage": "http://bacinsky.sk",
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
         "masterexploder/PHPThumb": "2.*"
