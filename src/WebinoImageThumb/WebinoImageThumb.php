@@ -11,6 +11,7 @@ namespace WebinoImageThumb;
 
 use PHPThumb\Plugins;
 use PHPThumb\GD as PHPThumb;
+use WebinoImageThumb\PhpThumb\Plugin as ExtraPlugins;
 
 /**
  * WebinoImageThumb service
@@ -36,7 +37,7 @@ class WebinoImageThumb
         } catch (\Exception $exc) {
             throw new Exception\RuntimeException($exc->getMessage(), $exc->getCode(), $exc);
         }
-        
+
         return $thumb;
     }
 
@@ -53,5 +54,16 @@ class WebinoImageThumb
     public function createReflection($percent, $reflection, $white, $border, $borderColor)
     {
         return new Plugins\Reflection($percent, $reflection, $white, $border, $borderColor);
+    }
+
+    /**
+     * Create a plugin to crop the whitespace surrounding an image
+     * @param int $border
+     * @param int $color
+     * @return ExtraPlugins\WhitespaceCropper
+     */
+    public function createWhitespaceCropper($border = 0, $color = 0)
+    {
+        return new ExtraPlugins\WhitespaceCropper($border, $color);
     }
 }

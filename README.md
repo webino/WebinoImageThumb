@@ -22,6 +22,7 @@
 
   - Resize, crop, pad, rotate, show and save images
   - Create image reflection
+  - Crop whitespace
 
 ## Setup
 
@@ -55,6 +56,11 @@
 
         $reflection = $thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
         $thumb      = $thumbnailer->create($imagePath, array(), array($reflection));
+
+  - Use whitespace cropper plugin:
+
+        $cropper = $thumbnailer->createWhitespaceCropper();
+        $thumb   = $thumbnailer->create($imagePath, array(), array($cropper));
 
 ## Options
 
@@ -166,11 +172,19 @@
     * `$border` - Whether a border should be drawn around the original image.
     * `$borderColor` - The hex value of the color you would like your border to be.
 
+## Whitespace Cropper plugin
+
+  * `createWhitespaceCropper($border, $color)`
+
+    * `$margin` - What pixels of a margin should be around the original image.
+    * `$color`  - The hex value of the color you would like to crop.
+
 ## Changelog
 
 ### 2.0.0
 
   - Requires PHPThumb 2.0 via composer
+  - Added Whitespace Cropper plugin
 
 ### 1.0.0
 
