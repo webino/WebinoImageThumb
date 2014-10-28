@@ -49,7 +49,7 @@ class WebinoImageThumb
      * @param int $white
      * @param bool $border
      * @param string $borderColor hex
-     * @return Plugins\ReflectionPlugin
+     * @return Plugins\Reflection
      */
     public function createReflection($percent, $reflection, $white, $border, $borderColor)
     {
@@ -72,7 +72,7 @@ class WebinoImageThumb
      * 
      * @param int $offset
      * @param Array $matrix
-     * @return ExtraPlugins\\Sharpen
+     * @return ExtraPlugins\Sharpen
      */
     public function createSharpen($offset = 0, $matrix = array()){
         return new ExtraPlugins\Sharpen($offset, $matrix);
