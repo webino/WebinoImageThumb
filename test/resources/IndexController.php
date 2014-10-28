@@ -53,7 +53,7 @@ class IndexController extends AbstractActionController
         $thumb = $this->thumbnailer->create(
             $image,
             array(),
-            array($this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4'))
+            array($this->thumbnailer->createSharpen())
         );
 
         $thumb

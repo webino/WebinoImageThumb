@@ -66,4 +66,15 @@ class WebinoImageThumb
     {
         return new ExtraPlugins\WhitespaceCropper($border, $color);
     }
+    
+    /**
+     * Create a beautifull sharpen image
+     * 
+     * @param int $offset
+     * @param Array $matrix
+     * @return ExtraPlugins\\Sharpen
+     */
+    public function createSharpen($offset = 0, $matrix = array()){
+        return new ExtraPlugins\Sharpen($offset, $matrix);
+    }
 }
