@@ -71,10 +71,10 @@ class WebinoImageThumb
      * Create a beautifull sharpen image
      * 
      * @param int $offset
-     * @param Array $matrix
+     * @param array $matrix
      * @return ExtraPlugins\Sharpen
      */
-    public function createSharpen($offset = 0, $matrix = array()){
+    public function createSharpen($offset = 0, array $matrix = array()){
         return new ExtraPlugins\Sharpen($offset, $matrix);
     }
 }
