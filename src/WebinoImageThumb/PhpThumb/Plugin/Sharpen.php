@@ -31,8 +31,6 @@ class Sharpen implements \PHPThumb\PluginInterface
         $divisor = array_sum(array_map('array_sum', $this->matrix));
 
         imageconvolution($oldImage, $this->matrix, $divisor, $this->offset);
-            
-        //$phpthumb->setOldImage($workingImage);
 
         return $phpthumb;
     }
