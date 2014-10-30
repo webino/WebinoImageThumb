@@ -7,7 +7,7 @@ use PHPThumb\GD as PHPThumb;
 /**
  * Sharpen plugin
  *
- * @author Miguel Vieira <vieira@mihuelvieira.com.pt>
+ * @author Miguel Vieira <vieira@miguelvieira.com.pt>
  */
 class Sharpen implements \PHPThumb\PluginInterface
 {
