@@ -4,6 +4,11 @@ namespace WebinoImageThumb\PhpThumb\Plugin;
 
 use PHPThumb\GD as PHPThumb;
 
+/**
+ * Sharpen plugin
+ *
+ * @author Miguel Vieira <vieira@mihuelvieira.com.pt>
+ */
 class Sharpen implements \PHPThumb\PluginInterface
 {
     protected $offset = 0;
@@ -18,7 +23,6 @@ class Sharpen implements \PHPThumb\PluginInterface
         empty($offset) or $this->offset = $offset;
         empty($matrix) or $this->matrix = $matrix;
     }
-
 
     /**
      * @param PHPThumb $phpthumb
