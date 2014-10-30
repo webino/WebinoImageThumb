@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Webino (https://github.com/webino/)
  *
@@ -22,6 +23,7 @@ use WebinoImageThumb\PhpThumb\Plugin as ExtraPlugins;
  */
 class WebinoImageThumb
 {
+
     /**
      * Create image thumbnail object
      *
@@ -66,7 +68,7 @@ class WebinoImageThumb
     {
         return new ExtraPlugins\WhitespaceCropper($border, $color);
     }
-    
+
     /**
      * Create a beautifull sharpen image
      * 
@@ -74,7 +76,9 @@ class WebinoImageThumb
      * @param array $matrix
      * @return ExtraPlugins\Sharpen
      */
-    public function createSharpen($offset = 0, array $matrix = array()){
+    public function createSharpen($offset = 0, array $matrix = array())
+    {
         return new ExtraPlugins\Sharpen($offset, $matrix);
     }
+
 }
