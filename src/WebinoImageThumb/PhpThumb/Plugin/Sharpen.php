@@ -2,7 +2,7 @@
 
 namespace WebinoImageThumb\PhpThumb\Plugin;
 
-use PHPThumb\PHPThumb;
+use PHPThumb\GD as PHPThumb;
 
 class Sharpen implements \PHPThumb\PluginInterface
 {
