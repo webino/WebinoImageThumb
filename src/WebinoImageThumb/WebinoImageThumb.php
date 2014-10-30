@@ -80,5 +80,4 @@ class WebinoImageThumb
     {
         return new ExtraPlugins\Sharpen($offset, $matrix);
     }
-
 }
