@@ -23,12 +23,13 @@
   - Resize, crop, pad, rotate, show and save images
   - Create image reflection
   - Crop whitespace
+  - Sharpen images
 
 ## Setup
 
   Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:
 
-  1. Run: `php composer.phar require webino/webino-image-thumb:2.*`
+  1. Run: `php composer.phar require webino/webino-image-thumb:dev-develop`
   3. Add `WebinoImageThumb` to the enabled modules list
 
 ## Requirements
@@ -61,6 +62,11 @@
 
         $cropper = $thumbnailer->createWhitespaceCropper();
         $thumb   = $thumbnailer->create($imagePath, array(), array($cropper));
+
+  - Use sharpen plugin:
+
+        $sharpen = $thumbnailer->createSharpen();
+        $thumb   = $thumbnailer->create($imagePath, array(), array($sharpen));
 
 ## Options
 
@@ -185,6 +191,7 @@
 
   - Requires PHPThumb 2.0 via composer
   - Added Whitespace Cropper plugin
+  - Added Sharpen plugin
 
 ### 1.0.0
 
