@@ -52,11 +52,8 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $image = __DIR__ . '/test.jpg';
-        $thumb = $this->thumbnailer->create(
-                $image, 
-                array(), 
-                array($this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4'))
-        );
+        $thumb = $this->thumbnailer->create($image, array(), array(
+            $this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4')));
         $thumb->resize(200, 200)
                 ->show()
                 ->save('public/resized_test.jpg');
@@ -70,12 +67,8 @@ class IndexController extends AbstractActionController
     public function sharpenAction()
     {
         $image = __DIR__ . '/test.jpg';
-        $thumb = $this->thumbnailer->create(
-                $image, 
-                array(), 
-                array($this->thumbnailer->createSharpen())
-        );
-
+        $thumb = $this->thumbnailer->create($image, array(), array(
+            $this->thumbnailer->createSharpen()));
         $thumb->resize(200, 200)
                 ->show()
                 ->save('public/sharpen_test.jpg');
