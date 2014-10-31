@@ -55,10 +55,7 @@ class IndexController extends AbstractActionController
         $thumb = $this->thumbnailer->create(
                 $image, array(), array($this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4'))
         );
-        $thumb
-                ->resize(200, 200)
-                ->show()
-                ->save('public/resized_test.jpg');
+        $thumb->resize(200, 200)->show()->save('public/resized_test.jpg');
     }
 
     /**
@@ -73,9 +70,6 @@ class IndexController extends AbstractActionController
                 $image, array(), array($this->thumbnailer->createSharpen())
         );
 
-        $thumb
-                ->resize(200, 200)
-                ->show()
-                ->save('public/resized_test.jpg');
+        $thumb->resize(200, 200)->show()->save('public/resized_test.jpg');
     }
 }
