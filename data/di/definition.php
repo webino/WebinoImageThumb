@@ -130,7 +130,7 @@ return array (
           0 => 'color',
           1 => NULL,
           2 => false,
-          3 => 0,
+          3 => NULL,
         ),
       ),
     ),

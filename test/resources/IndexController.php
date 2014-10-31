@@ -62,6 +62,23 @@ class IndexController extends AbstractActionController
     }
 
     /**
+     * Save and show an image with whitespace cropper
+     */
+    public function whitespaceCropperAction()
+    {
+        $image   = __DIR__ . '/test_whitespace.jpg';
+        $cropper = $this->thumbnailer->createWhitespaceCropper(0, 0x000000);
+        $thumb   = $this->thumbnailer->create($image, array(), array($cropper));
+
+        $thumb
+            ->resize(200, 200)
+            ->show()
+            ->save('public/resized_test.jpg');
+
+        return false;
+    }
+
+    /**
      * Save and show an image with sharpen
      */
     public function sharpenAction()

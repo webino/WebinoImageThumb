@@ -33,10 +33,10 @@ class WhitespaceCropper implements \PHPThumb\PluginInterface
      * @param int $margin
      * @param int $color
      */
-    public function __construct($margin = 0, $color = 0)
+    public function __construct($margin = 0, $color = null)
     {
-        empty($margin) or $this->margin = $margin;
-        empty($color)  or $this->color  = $color;
+        empty($margin)  or $this->margin = $margin;
+        is_null($color) or $this->color  = $color;
     }
 
     /**
@@ -61,9 +61,7 @@ class WhitespaceCropper implements \PHPThumb\PluginInterface
         $borderBottom = 0;
         for (; $borderBottom < imagesy($oldImage); ++$borderBottom) {
             for ($x = 0; $x < imagesx($oldImage); ++$x) {
-                if (imagecolorat($oldImage, $x, imagesy($oldImage) - $borderBottom - 1)
-                    != $this->color
-                ) {
+                if (imagecolorat($oldImage, $x, imagesy($oldImage) - $borderBottom - 1) != $this->color) {
                     $borderBottom -= $this->margin;
                     break 2;
                 }
