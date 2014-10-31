@@ -4,7 +4,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace WebinoImageThumb;
@@ -65,5 +65,18 @@ abstract class AbstractBase extends \PHPUnit_Framework_TestCase
         }
 
         return $uri;
+    }
+
+    /**
+     * Assert that response is a JPEG image
+     *
+     * @return self
+     */
+    protected function assertJpegImage($source)
+    {
+        $this->assertNotContains('Error', $source);
+        $this->assertNotContains('Exception', $source);
+        $this->assertContains('<CREATOR: gd-jpeg', $source);
+        return $this;
     }
 }

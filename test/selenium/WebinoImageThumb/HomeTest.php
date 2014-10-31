@@ -4,23 +4,31 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace WebinoImageThumb;
 
+/**
+ * WebinoImageThumb module tests
+ */
 class HomeTest extends AbstractBase
 {
     /**
-     *
+     * Reflection plugin test
      */
-    public function testHome()
+    public function testReflection()
     {
-        $this->session->open($this->uri);
+        $src = file_get_contents($this->uri . 'application/index-controller/reflection');
+        $this->assertJpegImage($src);
+    }
 
-        $src = $this->session->source();
-        $this->assertNotContains('Error', $src, null, true);
-        $this->assertNotContains('Exception', $src, null, true);
-        $this->assertContains('<CREATOR: gd-jpeg', $src);
+    /**
+     * Sharpen plugin test
+     */
+    public function testSharpen()
+    {
+        $src = file_get_contents($this->uri . 'application/index-controller/sharpen');
+        $this->assertJpegImage($src);
     }
 }

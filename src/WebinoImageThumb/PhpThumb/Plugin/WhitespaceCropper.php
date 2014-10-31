@@ -1,20 +1,43 @@
 <?php
+/**
+ * Webino (https://github.com/webino/)
+ *
+ * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
+ * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
+ * @license   BSD-3-Clause
+ */
 
 namespace WebinoImageThumb\PhpThumb\Plugin;
 
 use PHPThumb\GD as PHPThumb;
 
+/**
+ * Crop a whitespace around image
+ *
+ * @author Peter Bačinský <peter@bacinsky.sk>
+ */
 class WhitespaceCropper implements \PHPThumb\PluginInterface
 {
+    /**
+     * @var int
+     */
     protected $margin = 0;
-    protected $color  = 0xFFFFFF;
 
+    /**
+     * @var int
+     */
+    protected $color = 0xFFFFFF;
+
+    /**
+     *
+     * @param int $margin
+     * @param int $color
+     */
     public function __construct($margin = 0, $color = 0)
     {
         empty($margin) or $this->margin = $margin;
         empty($color)  or $this->color  = $color;
     }
-
 
     /**
      * @param PHPThumb $phpthumb
@@ -60,9 +83,7 @@ class WhitespaceCropper implements \PHPThumb\PluginInterface
         $borderRight = 0;
         for (; $borderRight < imagesx($oldImage); ++$borderRight) {
             for ($y = 0; $y < imagesy($oldImage); ++$y) {
-                if (imagecolorat($oldImage, imagesx($oldImage) - $borderRight - 1, $y)
-                    !== $this->color
-                ) {
+                if (imagecolorat($oldImage, imagesx($oldImage) - $borderRight - 1, $y) !== $this->color) {
                     $borderRight -= $this->margin;
                     break 2;
                 }

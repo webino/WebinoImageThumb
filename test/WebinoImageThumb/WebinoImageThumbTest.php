@@ -4,7 +4,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace WebinoImageThumb;
@@ -26,15 +26,6 @@ class WebinoImageThumbTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = new WebinoImageThumb;
-    }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-
     }
 
     /**
@@ -62,7 +53,25 @@ class WebinoImageThumbTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateReflection()
     {
-        $reflection = $this->object->createReflection(50, 50, 50, true, '#505050');
-        $this->assertInstanceOf('PHPThumb\Plugins\Reflection', $reflection);
+        $plugin = $this->object->createReflection(50, 50, 50, true, '#505050');
+        $this->assertInstanceOf('PHPThumb\Plugins\Reflection', $plugin);
+    }
+
+    /**
+     * @covers WebinoImageThumb\WebinoImageThumb::createWhiteSpaceCropper
+     */
+    public function testCreateWhiteSpaceCropper()
+    {
+        $plugin = $this->object->createWhiteSpaceCropper();
+        $this->assertInstanceOf('WebinoImageThumb\PHPThumb\Plugin\WhiteSpaceCropper', $plugin);
+    }
+
+    /**
+     * @covers WebinoImageThumb\WebinoImageThumb::createSharpen
+     */
+    public function testCreateSharpen()
+    {
+        $plugin = $this->object->createSharpen();
+        $this->assertInstanceOf('WebinoImageThumb\PHPThumb\Plugin\Sharpen', $plugin);
     }
 }

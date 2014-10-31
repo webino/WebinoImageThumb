@@ -4,7 +4,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 // Overrdides application controller
@@ -17,8 +17,9 @@ require __DIR__ . '/../IndexController.php';
  */
 return array(
     'modules' => array(
-        'WebinoImageThumb',
+
         'Application',
+        'WebinoImageThumb',
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(
@@ -29,8 +30,8 @@ return array(
         ),
         'module_paths' => array(
             'WebinoImageThumb' => __DIR__ . '/../..',
-            './module',
-            './vendor',
+            'module',
+            'vendor',
         ),
     ),
 );

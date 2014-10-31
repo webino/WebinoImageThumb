@@ -1,4 +1,11 @@
 <?php
+/**
+ * Webino (https://github.com/webino/)
+ *
+ * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
+ * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
+ * @license   BSD-3-Clause
+ */
 
 namespace WebinoImageThumb\PhpThumb\Plugin;
 
@@ -11,13 +18,24 @@ use PHPThumb\GD as PHPThumb;
  */
 class Sharpen implements \PHPThumb\PluginInterface
 {
+    /**
+     * @var int
+     */
     protected $offset = 0;
-    protected $matrix  = array(
+
+    /**
+     * @var array
+     */
+    protected $matrix = array(
         array(0.0, -1.0, 0.0),
         array(-1.0, 5.0, -1.0),
         array(0.0, -1.0, 0.0)
     );
 
+    /**
+     * @param type $offset Color offset
+     * @param type $matrix A 3x3 matrix: an array of three arrays of three floats
+     */
     public function __construct($offset = 0, $matrix = array())
     {
         empty($offset) or $this->offset = $offset;
@@ -30,12 +48,8 @@ class Sharpen implements \PHPThumb\PluginInterface
      */
     public function execute($phpthumb)
     {
-        $oldImage = $phpthumb->getOldImage();
-
         $divisor = array_sum(array_map('array_sum', $this->matrix));
-
-        imageconvolution($oldImage, $this->matrix, $divisor, $this->offset);
-
+        imageconvolution($phpthumb->getOldImage(), $this->matrix, $divisor, $this->offset);
         return $phpthumb;
     }
 }

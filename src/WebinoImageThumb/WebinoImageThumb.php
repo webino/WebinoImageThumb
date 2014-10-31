@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace WebinoImageThumb;
@@ -23,13 +23,12 @@ use WebinoImageThumb\PhpThumb\Plugin as ExtraPlugins;
  */
 class WebinoImageThumb
 {
-
     /**
      * Create image thumbnail object
      *
-     * @param  string $filename
-     * @param  array $options
-     * @param  array $plugins
+     * @param string $filename
+     * @param array $options
+     * @param array $plugins
      * @return PHPThumb
      */
     public function create($filename = null, array $options = array(), array $plugins = array())
@@ -60,6 +59,7 @@ class WebinoImageThumb
 
     /**
      * Create a plugin to crop the whitespace surrounding an image
+     *
      * @param int $border
      * @param int $color
      * @return ExtraPlugins\WhitespaceCropper
@@ -71,7 +71,7 @@ class WebinoImageThumb
 
     /**
      * Create a beautifull sharpen image
-     * 
+     *
      * @param int $offset
      * @param array $matrix
      * @return ExtraPlugins\Sharpen

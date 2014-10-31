@@ -4,7 +4,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace WebinoImageThumb;
@@ -26,15 +26,6 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = new Module;
-    }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-
     }
 
     /**

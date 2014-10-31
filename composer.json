@@ -1,12 +1,10 @@
 {
-    "name": "webino/webino-image-thumb",
+    "name":        "webino/webino-image-thumb",
     "description": "Image Thumbnailer for Zend Framework 2",
-    "type": "library",
-    "keywords": [
-        "webino", "image", "thumb", "zf2", "zend", "framework"
-    ],
-    "homepage": "https://github.com/webino/WebinoImageThumb",
-    "license": "BSD-3-Clause",
+    "type":        "library",
+    "license":     "BSD-3-Clause",
+    "keywords":    ["webino", "image", "thumb", "zf2", "zend", "framework"],
+    "homepage":    "https://github.com/webino/WebinoImageThumb",
     "authors": [
         {
             "name": "Webino, s. r. o.",
@@ -42,8 +40,6 @@
         "zendframework/zendframework": "2.*"
     },
     "autoload": {
-        "psr-0": {
-            "WebinoImageThumb": "src/"
-        }
+        "psr-0": {"WebinoImageThumb": "src/"}
     }
 }

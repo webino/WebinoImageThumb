@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
  * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
- * @license   New BSD License
+ * @license   BSD-3-Clause
  */
 
 namespace Application\Controller;
@@ -45,32 +45,36 @@ class IndexController extends AbstractActionController
     }
 
     /**
-     * How to example
-     *
      * Save and show an image with reflection
      */
-    public function indexAction()
+    public function reflectionAction()
     {
-        $image = __DIR__ . '/test.jpg';
-        $thumb = $this->thumbnailer->create($image, array(), array(
-            $this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4')));
-        $thumb->resize(200, 200)
-                ->show()
-                ->save('public/resized_test.jpg');
+        $image      = __DIR__ . '/test.jpg';
+        $reflection = $this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
+        $thumb      = $this->thumbnailer->create($image, array(), array($reflection));
+
+        $thumb
+            ->resize(200, 200)
+            ->show()
+            ->save('public/resized_test.jpg');
+
+        return false;
     }
 
     /**
-     * How to example
-     *
      * Save and show an image with sharpen
      */
     public function sharpenAction()
     {
-        $image = __DIR__ . '/test.jpg';
-        $thumb = $this->thumbnailer->create($image, array(), array(
-            $this->thumbnailer->createSharpen()));
-        $thumb->resize(200, 200)
-                ->show()
-                ->save('public/sharpen_test.jpg');
+        $image   = __DIR__ . '/test.jpg';
+        $sharpen = $this->thumbnailer->createSharpen();
+        $thumb   = $this->thumbnailer->create($image, array(), array($sharpen));
+
+        $thumb
+            ->resize(200, 200)
+            ->show()
+            ->save('public/sharpen_test.jpg');
+
+        return false;
     }
 }
