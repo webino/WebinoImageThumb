@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Webino (https://github.com/webino/)
  *
@@ -19,6 +20,7 @@ use Zend\Mvc\Controller\AbstractActionController;
  */
 class IndexController extends AbstractActionController
 {
+
     /**
      * @var WebinoImageThumb
      */
@@ -51,14 +53,29 @@ class IndexController extends AbstractActionController
     {
         $image = __DIR__ . '/test.jpg';
         $thumb = $this->thumbnailer->create(
-            $image,
-            array(),
-            array($this->thumbnailer->createSharpen())
+                $image, array(), array($this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4'))
+        );
+        $thumb
+                ->resize(200, 200)
+                ->show()
+                ->save('public/resized_test.jpg');
+    }
+
+    /**
+     * How to example
+     *
+     * Save and show an image with sharpen
+     */
+    public function sharpenAction()
+    {
+        $image = __DIR__ . '/test.jpg';
+        $thumb = $this->thumbnailer->create(
+                $image, array(), array($this->thumbnailer->createSharpen())
         );
 
         $thumb
-            ->resize(200, 200)
-            ->show()
-            ->save('public/resized_test.jpg');
+                ->resize(200, 200)
+                ->show()
+                ->save('public/resized_test.jpg');
     }
 }
