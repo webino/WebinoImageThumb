@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>WebinoImageThumb by webino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">WebinoImageThumb</h1>
+      <h2 class="project-tagline">Image Thumbnailer for Zend Framework 2</h2>
+      <a href="https://github.com/webino/WebinoImageThumb" class="btn">View on GitHub</a>
+      <a href="https://github.com/webino/WebinoImageThumb/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/webino/WebinoImageThumb/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="image-thumbnailer--for-zend-framework-2" class="anchor" href="#image-thumbnailer--for-zend-framework-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image Thumbnailer <br> for Zend Framework 2</h1>
+
+<p><a href="http://travis-ci.org/webino/WebinoImageThumb" title="Develop Build Status"><img src="https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop" alt="Build Status"></a>
+<a href="https://coveralls.io/r/webino/WebinoImageThumb?branch=develop" title="Develop Coverage Status"><img src="https://coveralls.io/repos/webino/WebinoImageThumb/badge.png?branch=develop" alt="Coverage Status"></a>
+<a href="https://scrutinizer-ci.com/g/webino/WebinoImageThumb/" title="Quality Score"><img src="https://scrutinizer-ci.com/g/webino/WebinoImageThumb/badges/quality-score.png?s=b3ef629e7e8eaafe1dd8d70128958c2718dd8579" alt="Scrutinizer Quality Score"></a>
+<a href="https://www.versioneye.com/user/projects/529f9724632bac57310000b6" title="Develop Dependency Status"><img src="https://www.versioneye.com/user/projects/529f9724632bac57310000b6/badge.png" alt="Dependency Status"></a>
+<br>
+<a href="https://packagist.org/packages/webino/webino-image-thumb" title="Latest Stable Version"><img src="https://poser.pugx.org/webino/webino-image-thumb/v/stable.png" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/webino/webino-image-thumb" title="Total Downloads"><img src="https://poser.pugx.org/webino/webino-image-thumb/downloads.png" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/webino/webino-image-thumb" title="Latest Unstable Version"><img src="https://poser.pugx.org/webino/webino-image-thumb/v/unstable.png" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/webino/webino-image-thumb"><img src="https://poser.pugx.org/webino/webino-image-thumb/license.svg" alt="License"></a></p>
+
+<p>Service that provides API to manipulate images.</p>
+
+<p>Powered by <a href="https://github.com/masterexploder/PHPThumb">PHPThumb</a></p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Resize, crop, pad, rotate, show and save images</li>
+<li>Create image reflection</li>
+<li>Crop whitespace</li>
+<li>Sharpen images</li>
+</ul>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>Following steps are necessary to get this module working, considering a zf2-skeleton or very similar application:</p>
+
+<ol>
+<li>Run: <code>php composer.phar require webino/webino-image-thumb:dev-develop</code>
+</li>
+<li>Add <code>WebinoImageThumb</code> to the enabled modules list</li>
+</ol>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>GD 2.0+</li>
+</ul>
+
+<h2>
+<a id="quickstart" class="anchor" href="#quickstart" aria-hidden="true"><span class="octicon octicon-link"></span></a>QuickStart</h2>
+
+<ul>
+<li>
+<p>For example add following code into the controller action, assume example image:</p>
+
+<pre><code>// We encourage to use Dependency Injection instead of Service Locator
+$thumbnailer = $this-&gt;getServiceLocator()-&gt;get('WebinoImageThumb');
+$imagePath   = 'public/images/example.jpg';
+$thumb       = $thumbnailer-&gt;create($imagePath, $options = [], $plugins = []);
+
+$thumb-&gt;resize(100, 100);
+
+$thumb-&gt;show();
+// or/and
+$thumb-&gt;save('public/images/resized.jpg');
+</code></pre>
+
+<p><em>NOTE: If you don't know how to inject the WebinoImageThumb into action controller, check out <code>test/resources</code></em></p>
+</li>
+<li>
+<p>Use reflection plugin:</p>
+
+<pre><code>$reflection = $thumbnailer-&gt;createReflection(40, 40, 80, true, '#a4a4a4');
+$thumb      = $thumbnailer-&gt;create($imagePath, [], [$reflection]);
+</code></pre>
+</li>
+<li>
+<p>Use whitespace cropper plugin:</p>
+
+<pre><code>$cropper = $thumbnailer-&gt;createWhitespaceCropper();
+$thumb   = $thumbnailer-&gt;create($imagePath, [], [$cropper]);
+</code></pre>
+</li>
+<li>
+<p>Use sharpen plugin:</p>
+
+<pre><code>$sharpen = $thumbnailer-&gt;createSharpen();
+$thumb   = $thumbnailer-&gt;create($imagePath, [], [$sharpen]);
+</code></pre>
+</li>
+</ul>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>The options array allows you to customize the behavior of the library a bit. Some of these options are implementation-specific, and are noted as such.  So, let's first go over what options are available to us:</p>
+
+<table>
+    <tr>
+        <th>Option Name</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Valid Values</th>
+    </tr>
+    <tr>
+        <td>resizeUp</td>
+        <td>Whether or not to scale an image up to the desired dimensions</td>
+        <td>false</td>
+        <td>true / false</td>
+    </tr>
+    <tr>
+        <td>jpegQuality</td>
+        <td>What quality to save jpeg files with (how much compression to use, 100 being none)</td>
+        <td>100</td>
+        <td>1-100</td>
+    </tr>
+    <tr>
+        <td>correctPermissions</td>
+        <td>Whether or not the library should attempt to correct file permissions. This will only work if you set up your PHP to allow chmod operations</td>
+        <td>false</td>
+        <td>true / false</td>
+    </tr>
+    <tr>
+        <td>preserveAlpha</td>
+        <td>Whether or not to preserve alpha transparency in PNG files</td>
+        <td>true</td>
+        <td>true / false</td>
+    </tr>
+    <tr>
+        <td>alphaMaskColor</td>
+        <td>What rgb color should be used for the alpha mask</td>
+        <td><code>[255, 255, 255]</code></td>
+        <td><code>[0-255, 0-255, 0-255]</code></td>
+    </tr>
+    <tr>
+        <td>preserveTransparency</td>
+        <td>Whether or not to preserve transparency in GIF files</td>
+        <td>true</td>
+        <td>true / false</td>
+    </tr>
+    <tr>
+        <td>transparencyMaskColor</td>
+        <td>What rgb color should be used for the transparency mask</td>
+        <td><code>[255, 255, 255]</code></td>
+        <td><code>[0-255, 0-255, 0-255]</code></td>
+    </tr>
+    <tr>
+        <td>interlace</td>
+        <td>When the interlace option equals true or false call imageinterlace</td>
+        <td><code>null</code></td>
+        <td><code>true / false</code></td>
+    </tr>
+</table>
+
+<h2>
+<a id="functions" class="anchor" href="#functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions</h2>
+
+<ul>
+<li><code>adaptiveResize($width, $height)</code></li>
+<li><code>adaptiveResizePercent($width, $height, $percent = 50)</code></li>
+<li><code>adaptiveResizeQuadrant($width, $height, $quadrant = 'T|B|C|L|R')</code></li>
+<li><code>crop($startX, $startY, $cropWidth, $cropHeight)</code></li>
+<li><code>cropFromCenter($cropWidth, $cropHeight = null)</code></li>
+<li><code>pad($width, $height, $color = [255, 255, 255])</code></li>
+<li><code>resize($maxWidth, $maxHeight)</code></li>
+<li><code>resizePercent($percent)</code></li>
+<li><code>rotateImage($direction = 'CW|CCW')</code></li>
+<li><code>rotateImageNDegrees($degrees)</code></li>
+<li><code>save($fileName, $format = 'GIF|JPG|PNG')</code></li>
+<li><code>show($rawData = false)</code></li>
+</ul>
+
+<h2>
+<a id="getters--setters" class="anchor" href="#getters--setters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getters / Setters</h2>
+
+<ul>
+<li><code>getCurrentDimensions()</code></li>
+<li><code>getFileName()</code></li>
+<li><code>getFormat()</code></li>
+<li><code>getIsRemoteImage()</code></li>
+<li><code>getMaxHeight()</code></li>
+<li><code>getMaxWidth()</code></li>
+<li><code>getNewDimensions()</code></li>
+<li><code>getOldImage()</code></li>
+<li><code>getOptions()</code></li>
+<li><code>getPercent()</code></li>
+<li><code>getWorkingImage()</code></li>
+<li><code>setCurrentDimensions($currentDimensions)</code></li>
+<li><code>setFileName($fileName)</code></li>
+<li><code>setFormat($format)</code></li>
+<li><code>setMaxHeight($maxHeight)</code></li>
+<li><code>setMaxWidth($maxWidth)</code></li>
+<li><code>setNewDimensions($newDimensions)</code></li>
+<li><code>setOldImage($oldImage)</code></li>
+<li><code>setOptions($options)</code></li>
+<li><code>setPercent($percent)</code></li>
+<li><code>setWorkingImage($workingImage)</code></li>
+</ul>
+
+<h2>
+<a id="reflection-plugin" class="anchor" href="#reflection-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reflection plugin</h2>
+
+<ul>
+<li>
+<p><code>createReflection($percent, $reflection, $white, $border, $borderColor)</code></p>
+
+<ul>
+<li>
+<code>$percent</code> - What percentage of the image to create the reflection from.</li>
+<li>
+<code>$reflection</code> - What percentage of the image height should the reflection height be.</li>
+<li>
+<code>$white</code> - How transparent (using white as the background) the reflection should be, as a percent.</li>
+<li>
+<code>$border</code> - Whether a border should be drawn around the original image.</li>
+<li>
+<code>$borderColor</code> - The hex value of the color you would like your border to be.</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="whitespace-cropper-plugin" class="anchor" href="#whitespace-cropper-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Whitespace Cropper plugin</h2>
+
+<ul>
+<li>
+<p><code>createWhitespaceCropper($border, $color)</code></p>
+
+<ul>
+<li>
+<code>$margin</code> - What pixels of a margin should be around the original image.</li>
+<li>
+<code>$color</code>  - The hex value of the color you would like to crop.</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h3>
+<a id="200-unreleased" class="anchor" href="#200-unreleased" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.0.0 [UNRELEASED]</h3>
+
+<ul>
+<li>Requires PHPThumb 2.0 via composer</li>
+<li>Added Whitespace Cropper plugin</li>
+<li>Added Sharpen plugin</li>
+<li>Removed ZF autoloader support</li>
+</ul>
+
+<h3>
+<a id="100" class="anchor" href="#100" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.0.0</h3>
+
+<ul>
+<li>Initial release</li>
+</ul>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<p><a href="https://www.versioneye.com/user/projects/52f494f2ec1375dc7b0000cd"><img src="https://www.versioneye.com/user/projects/52f494f2ec1375dc7b0000cd/badge.svg?style=flat" alt="Dependency Status"></a></p>
+
+<p>We will appreciate any contributions on development of this module.</p>
+
+<p>Learn <a href="https://github.com/webino/Webino/wiki/How-to-develop-Webino-module">How to develop Webino modules</a></p>
+
+<h2>
+<a id="addendum" class="anchor" href="#addendum" aria-hidden="true"><span class="octicon octicon-link"></span></a>Addendum</h2>
+
+<p>Most of the documentation is taken from the <a href="https://github.com/masterexploder/PHPThumb/wiki">PHPThumb wiki</a>.</p>
+
+<p>Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.</p>
+
+<p><a href="https://github.com/webino/WebinoImageThumb/issues">Report a bug</a> | <a href="https://github.com/webino/WebinoImageThumb">Fork me</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/webino/WebinoImageThumb">WebinoImageThumb</a> is maintained by <a href="https://github.com/webino">webino</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
