@@ -19,6 +19,5 @@
     </transformations>
     <files>
         <directory>src</directory>
-        <ignore>src/*/autoload_classmap.php</ignore>
     </files>
 </phpdoc>

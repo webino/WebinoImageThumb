@@ -4,30 +4,28 @@
  * Webino (https://github.com/webino/)
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
- * @copyright Copyright (c) 2012-2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright Copyright (c) 2013-2015 Webino, s. r. o. (http://webino.sk/)
  * @license   BSD-3-Clause
  */
 
 namespace Application\Controller;
 
-use WebinoImageThumb\WebinoImageThumb;
+use WebinoImageThumb\Service\ImageThumb;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
- * WebinoImageThumb test application controller
- *
- * @author Peter Bačinský <peter@bacinsky.sk>
+ * Image Thumbnailer test application controller
  */
 class IndexController extends AbstractActionController
 {
 
     /**
-     * @var WebinoImageThumb
+     * @var ImageThumb
      */
     protected $thumbnailer;
 
     /**
-     * Example of constructor DI
+     * Example of a constructor DI
      *
      * If you don't want to use DI, you can use a Service Locator
      * <code>
@@ -35,11 +33,11 @@ class IndexController extends AbstractActionController
      * </code>
      *
      * To see how we configure the controller to use DI
-     * check out test/resources/config/module.config.php
+     * check out tests/resources/config/module.config.php
      *
-     * @param WebinoImageThumb $thumbnailer
+     * @param ImageThumb $thumbnailer
      */
-    public function __construct(WebinoImageThumb $thumbnailer)
+    public function __construct(ImageThumb $thumbnailer)
     {
         $this->thumbnailer = $thumbnailer;
     }
@@ -49,9 +47,9 @@ class IndexController extends AbstractActionController
      */
     public function reflectionAction()
     {
-        $image      = __DIR__ . '/test.jpg';
+        $image      = __DIR__ . '/../../../data/media/test.jpg';
         $reflection = $this->thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
-        $thumb      = $this->thumbnailer->create($image, array(), array($reflection));
+        $thumb      = $this->thumbnailer->create($image, [], [$reflection]);
 
         $thumb
             ->resize(200, 200)
@@ -66,9 +64,9 @@ class IndexController extends AbstractActionController
      */
     public function whitespaceCropperAction()
     {
-        $image   = __DIR__ . '/test_whitespace.jpg';
+        $image   = __DIR__ . '/../../../data/media/test_whitespace.jpg';
         $cropper = $this->thumbnailer->createWhitespaceCropper(0, 0x000000);
-        $thumb   = $this->thumbnailer->create($image, array(), array($cropper));
+        $thumb   = $this->thumbnailer->create($image, [], [$cropper]);
 
         $thumb
             ->resize(200, 200)
@@ -83,9 +81,9 @@ class IndexController extends AbstractActionController
      */
     public function sharpenAction()
     {
-        $image   = __DIR__ . '/test.jpg';
+        $image   = __DIR__ . '/../../../data/media/test.jpg';
         $sharpen = $this->thumbnailer->createSharpen();
-        $thumb   = $this->thumbnailer->create($image, array(), array($sharpen));
+        $thumb   = $this->thumbnailer->create($image, [], [$sharpen]);
 
         $thumb
             ->resize(200, 200)

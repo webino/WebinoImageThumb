@@ -1,16 +1,8 @@
 {
     "name": "WebinoImageThumb",
-    "repository": "Not a NPM package",
     "devDependencies": {
         "grunt": "0.4.*",
-        "grunt-exec": "0.4.*",
-        "grunt-contrib-clean": "0.5.*",
-        "grunt-mkdir": "0.1.*",
-        "grunt-phplint": "0.0.*",
-        "grunt-phpunit": "0.3.*",
-        "grunt-phpcs": "0.2.*",
-        "grunt-phpmd": "0.1.*",
-        "grunt-phpcpd": "0.1.*",
-        "grunt-todos": "0.2.*"
+        "grunt-cli": "0.1.*",
+        "shelljs": "~0.3"
     }
 }

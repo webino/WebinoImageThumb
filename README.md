@@ -1,22 +1,18 @@
 # Image Thumbnailer <br /> for Zend Framework 2
 
-  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=master)](http://travis-ci.org/webino/WebinoImageThumb "Master Build Status")
-  [![Coverage Status](https://coveralls.io/repos/webino/WebinoImageThumb/badge.png?branch=master)](https://coveralls.io/r/webino/WebinoImageThumb?branch=master "Master Coverage Status")
-  [![Dependency Status](https://www.versioneye.com/user/projects/529f9725632bac512c00007e/badge.png)](https://www.versioneye.com/user/projects/529f9725632bac512c00007e "Master Dependency Status")
-  [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop Build Status")
-  [![Coverage Status](https://coveralls.io/repos/webino/WebinoImageThumb/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoImageThumb?branch=develop "Develop Coverage Status")
-  [![Dependency Status](https://www.versioneye.com/user/projects/529f9724632bac57310000b6/badge.png)](https://www.versioneye.com/user/projects/529f9724632bac57310000b6 "Develop Dependency Status")
+[![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop Build Status")
+[![Coverage Status](https://coveralls.io/repos/webino/WebinoImageThumb/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoImageThumb?branch=develop "Develop Coverage Status")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/badges/quality-score.png?s=b3ef629e7e8eaafe1dd8d70128958c2718dd8579)](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/ "Quality Score")
+[![Dependency Status](https://www.versioneye.com/user/projects/529f9724632bac57310000b6/badge.png)](https://www.versioneye.com/user/projects/529f9724632bac57310000b6 "Develop Dependency Status")
+<br />
+[![Latest Stable Version](https://poser.pugx.org/webino/webino-image-thumb/v/stable.png)](https://packagist.org/packages/webino/webino-image-thumb "Latest Stable Version")
+[![Total Downloads](https://poser.pugx.org/webino/webino-image-thumb/downloads.png)](https://packagist.org/packages/webino/webino-image-thumb "Total Downloads")
+[![Latest Unstable Version](https://poser.pugx.org/webino/webino-image-thumb/v/unstable.png)](https://packagist.org/packages/webino/webino-image-thumb "Latest Unstable Version")
+[![License](https://poser.pugx.org/webino/webino-image-thumb/license.svg)](https://packagist.org/packages/webino/webino-image-thumb)
 
-  [![Latest Stable Version](https://poser.pugx.org/webino/webino-image-thumb/v/stable.png)](https://packagist.org/packages/webino/webino-image-thumb "Latest Stable Version")
-  [![Latest Unstable Version](https://poser.pugx.org/webino/webino-image-thumb/v/unstable.png)](https://packagist.org/packages/webino/webino-image-thumb "Latest Unstable Version")
-  [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/badges/quality-score.png?s=b3ef629e7e8eaafe1dd8d70128958c2718dd8579)](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/ "Quality Score")
-  [![Daily Downloads](https://poser.pugx.org/webino/webino-image-thumb/d/daily.png)](https://packagist.org/packages/webino/webino-image-thumb "Daily Downloads")
-  [![Montly Downloads](https://poser.pugx.org/webino/webino-image-thumb/d/monthly.png)](https://packagist.org/packages/webino/webino-image-thumb "Monthly Downloads")
-  [![Total Downloads](https://poser.pugx.org/webino/webino-image-thumb/downloads.png)](https://packagist.org/packages/webino/webino-image-thumb "Total Downloads")
+Service that provides API to manipulate images.
 
-  Service that provides API to manipulate images.
-
-  Powered by [PHPThumb](https://github.com/masterexploder/PHPThumb)
+Powered by [PHPThumb](https://github.com/masterexploder/PHPThumb)
 
 ## Features
 
@@ -43,7 +39,7 @@
         // We encourage to use Dependency Injection instead of Service Locator
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         $imagePath   = 'public/images/example.jpg';
-        $thumb       = $thumbnailer->create($imagePath, $options = array(), $plugins = array());
+        $thumb       = $thumbnailer->create($imagePath, $options = [], $plugins = []);
 
         $thumb->resize(100, 100);
 
@@ -56,17 +52,17 @@
   - Use reflection plugin:
 
         $reflection = $thumbnailer->createReflection(40, 40, 80, true, '#a4a4a4');
-        $thumb      = $thumbnailer->create($imagePath, array(), array($reflection));
+        $thumb      = $thumbnailer->create($imagePath, [], [$reflection]);
 
   - Use whitespace cropper plugin:
 
         $cropper = $thumbnailer->createWhitespaceCropper();
-        $thumb   = $thumbnailer->create($imagePath, array(), array($cropper));
+        $thumb   = $thumbnailer->create($imagePath, [], [$cropper]);
 
   - Use sharpen plugin:
 
         $sharpen = $thumbnailer->createSharpen();
-        $thumb   = $thumbnailer->create($imagePath, array(), array($sharpen));
+        $thumb   = $thumbnailer->create($imagePath, [], [$sharpen]);
 
 ## Options
 
@@ -106,8 +102,8 @@
     <tr>
         <td>alphaMaskColor</td>
         <td>What rgb color should be used for the alpha mask</td>
-        <td><code>array(255,255,255)</code></td>
-        <td><code>array([0-255], [0-255], [0-255])</code></td>
+        <td><code>[255, 255, 255]</code></td>
+        <td><code>[0-255, 0-255, 0-255]</code></td>
     </tr>
     <tr>
         <td>preserveTransparency</td>
@@ -118,8 +114,8 @@
     <tr>
         <td>transparencyMaskColor</td>
         <td>What rgb color should be used for the transparency mask</td>
-        <td><code>array(255,255,255)</code></td>
-        <td><code>array([0-255], [0-255], [0-255])</code></td>
+        <td><code>[255, 255, 255]</code></td>
+        <td><code>[0-255, 0-255, 0-255]</code></td>
     </tr>
     <tr>
         <td>interlace</td>
@@ -136,7 +132,7 @@
   * `adaptiveResizeQuadrant($width, $height, $quadrant = 'T|B|C|L|R')`
   * `crop($startX, $startY, $cropWidth, $cropHeight)`
   * `cropFromCenter($cropWidth, $cropHeight = null)`
-  * `pad($width, $height, $color = array(255, 255, 255))`
+  * `pad($width, $height, $color = [255, 255, 255])`
   * `resize($maxWidth, $maxHeight)`
   * `resizePercent($percent)`
   * `rotateImage($direction = 'CW|CCW')`
@@ -187,72 +183,24 @@
 
 ## Changelog
 
-### 2.0.0
+### 2.0.0 [UNRELEASED]
 
   - Requires PHPThumb 2.0 via composer
   - Added Whitespace Cropper plugin
   - Added Sharpen plugin
+  - Removed ZF autoloader support
 
 ### 1.0.0
 
   - Initial release
 
-## Develop
+## Development
 
-This package uses Grunt task runner to automating the development.
+[![Dependency Status](https://www.versioneye.com/user/projects/52f494f2ec1375dc7b0000cd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/52f494f2ec1375dc7b0000cd)
 
-### Requirements
+We will appreciate any contributions on development of this module.
 
-  - [PSR-2 coding style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
-  - [Linux](http://www.ubuntu.com/download)
-  - [NetBeans](https://netbeans.org/downloads/) (recommended)
-  - [NPM](https://npmjs.org/)
-  - [Grunt](http://gruntjs.com/getting-started)
-  - [PHPUnit](http://phpunit.de/manual/3.7/en/installation.html)
-  - [Selenium](http://www.seleniumhq.org/)
-  - [HtmlUnit](http://htmlunit.sourceforge.net/)
-  - [Web browser](https://www.google.com/intl/sk/chrome/browser/) (recommended)
-
-### Setup
-
-Setting up development environment of the package.
-
-  1. Clone this repository and run: `npm install`
-
-  2. To update development environment run: `grunt update`
-
-     *Now your development environment is set.*
-
-  3. Open project in (NetBeans) IDE
-
-  4. To check module integration with the skeleton application open following directory via web browser:
-     `._test/ZendSkeletonApplication/public/`
-
-     e.g. [http://localhost/webino/WebinoImageThumb/._test/ZendSkeletonApplication/public/](http://localhost/WebinoImageThumb/._test/ZendSkeletonApplication/public/)
-
-  5. Integration test resources are in directory: `test/resources`
-
-### Testing
-
-  - Run `phpunit` in the test directory
-  - Run `grunt test` in the module directory to run tests and code analysis
-
-    *NOTE: To run the code analysis there are some tool requirements:*
-      - [pdepend](http://pdepend.org/)
-      - [phpcb](https://github.com/Mayflower/PHP_CodeBrowser)
-      - [phpcpd](https://github.com/sebastianbergmann/phpcpd)
-      - [phpcs](http://pear.php.net/package/PHP_CodeSniffer/)
-      - [phpdoc](http://www.phpdoc.org/)
-      - [phploc](https://github.com/sebastianbergmann/phploc)
-      - [phpmd](http://phpmd.org/download/index.html)
-
-    *NOTE: Those tools are present after development environment is based.*
-
-  - Run `grunt selenium_test` in the module directory to run the Selenium WebDriver tests
-
-    *NOTE: To specify the testing URI set the uri option, e.g. `grunt selenium_test -uri http://example.com/`*
-
-    *NOTE: Selenium server will be started/stopped automatically, assuming `/etc/init.d/selenium` is available to run.*
+Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
 
 ## Addendum
 

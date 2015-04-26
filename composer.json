@@ -1,22 +1,29 @@
 {
     "name":        "webino/webino-image-thumb",
     "description": "Image Thumbnailer for Zend Framework 2",
+    "homepage":    "https://github.com/webino/WebinoImageThumb",
     "type":        "library",
     "license":     "BSD-3-Clause",
-    "keywords":    ["webino", "image", "thumb", "zf2", "zend", "framework"],
-    "homepage":    "https://github.com/webino/WebinoImageThumb",
+    "keywords": [
+      "webino",
+      "image",
+      "thumb",
+      "zf2",
+      "zend",
+      "framework"
+    ],
     "authors": [
         {
-            "name": "Webino, s. r. o.",
-            "email": "info@webino.sk",
+            "name":     "Webino, s. r. o.",
+            "email":    "info@webino.sk",
             "homepage": "http://webino.sk",
-            "role": "Developer"
+            "role":     "Developer"
         },
         {
-            "name": "Peter Bačinský",
-            "email": "peter@bacinsky.sk",
+            "name":     "Peter Bacinsky",
+            "email":    "peter@bacinsky.sk",
             "homepage": "http://bacinsky.sk",
-            "role": "Developer"
+            "role":     "Developer"
         }
     ],
     "require": {
@@ -27,17 +34,8 @@
         "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
-        "element-34/php-webdriver": "1.*",
-        "mayflower/php-codebrowser": "*",
-        "pdepend/pdepend": "1.*",
-        "phpdocumentor/phpdocumentor": "2.*",
-        "phploc/phploc": "*",
-        "phpmd/phpmd": "1.*",
-        "phpunit/phpunit": "3.7.*",
-        "satooshi/php-coveralls": "0.*",
-        "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "1.*",
-        "zendframework/zendframework": "2.*"
+        "webino/webino-dev": "dev-develop",
+        "webino/webino-debug": "dev-develop"
     },
     "autoload": {
         "psr-0": {"WebinoImageThumb": "src/"}
