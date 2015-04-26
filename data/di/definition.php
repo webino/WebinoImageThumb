@@ -58,8 +58,7 @@ return array (
   array (
     'supertypes' => 
     array (
-      0 => 'Zend\\ModuleManager\\Feature\\AutoloaderProviderInterface',
-      1 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
+      0 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
@@ -69,38 +68,17 @@ return array (
     array (
     ),
   ),
-  'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen' => 
+  'WebinoImageThumb\\Service\\ImageThumb' => 
   array (
     'supertypes' => 
     array (
-      0 => 'PHPThumb\\PluginInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
     array (
-      '__construct' => 3,
     ),
     'parameters' => 
     array (
-      '__construct' => 
-      array (
-        'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen::__construct:0' => 
-        array (
-          0 => 'offset',
-          1 => NULL,
-          2 => false,
-          3 => 0,
-        ),
-        'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen::__construct:1' => 
-        array (
-          0 => 'matrix',
-          1 => NULL,
-          2 => false,
-          3 => 
-          array (
-          ),
-        ),
-      ),
     ),
   ),
   'WebinoImageThumb\\PhpThumb\\Plugin\\WhitespaceCropper' => 
@@ -135,17 +113,38 @@ return array (
       ),
     ),
   ),
-  'WebinoImageThumb\\WebinoImageThumb' => 
+  'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen' => 
   array (
     'supertypes' => 
     array (
+      0 => 'PHPThumb\\PluginInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
     array (
+      '__construct' => 3,
     ),
     'parameters' => 
     array (
+      '__construct' => 
+      array (
+        'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen::__construct:0' => 
+        array (
+          0 => 'offset',
+          1 => NULL,
+          2 => false,
+          3 => 0,
+        ),
+        'WebinoImageThumb\\PhpThumb\\Plugin\\Sharpen::__construct:1' => 
+        array (
+          0 => 'matrix',
+          1 => NULL,
+          2 => false,
+          3 => 
+          array (
+          ),
+        ),
+      ),
     ),
   ),
 );
