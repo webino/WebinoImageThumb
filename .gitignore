@@ -1,4 +1,3 @@
-nbproject/private
 ._*
 .~lock.*
 *.log
@@ -7,7 +6,8 @@ nbproject/private
 .idea
 .project
 .settings
+nbproject
+node_modules
 composer.lock
 composer.phar
-node_modules
 !.gitignore

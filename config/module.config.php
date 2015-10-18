@@ -13,6 +13,7 @@ use WebinoImageThumb\Service\ImageThumb;
  * Do not write your custom settings into this file
  */
 return [
+    // TODO deprecated DI config, use factories
     'di' => [
         'definition' => [
             'compiler' => [

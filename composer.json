@@ -29,14 +29,23 @@
     "require": {
         "php": ">=5.3.3",
         "ext-gd": "*",
-        "masterexploder/PHPThumb": "2.*"
+        "masterexploder/PHPThumb": "2.*",
+        "zendframework/zend-di": "2.*"
     },
     "suggest": {
         "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
         "webino/webino-dev": "dev-develop",
-        "webino/webino-debug": "dev-develop"
+        "webino/webino-debug": "dev-develop",
+        "zendframework/zend-modulemanager": "2.*",
+        "zendframework/zend-version": "2.*",
+        "zendframework/zend-console": "2.*",
+        "zendframework/zend-loader": "2.*",
+        "zendframework/zend-http": "2.*",
+        "zendframework/zend-log": "2.*",
+        "zendframework/zend-mvc": "2.*",
+        "zendframework/zend-view": "2.*"
     },
     "autoload": {
         "psr-0": {"WebinoImageThumb": "src/"}
