@@ -30,7 +30,7 @@ class ImageThumb
      * @param array $plugins
      * @return PHPThumb
      */
-    public function create($filename = null, array $options = array(), array $plugins = array())
+    public function create($filename = null, array $options = [], array $plugins = [])
     {
         try {
             $thumb = new PHPThumb($filename, $options, $plugins);
@@ -75,7 +75,7 @@ class ImageThumb
      * @param array $matrix
      * @return ExtraPlugins\Sharpen
      */
-    public function createSharpen($offset = 0, array $matrix = array())
+    public function createSharpen($offset = 0, array $matrix = [])
     {
         return new ExtraPlugins\Sharpen($offset, $matrix);
     }

@@ -15,9 +15,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 /**
  * Image Thumbnailer test application controller
  */
-class IndexController extends AbstractActionController
+class DemoController extends AbstractActionController
 {
-
     /**
      * @var ImageThumb
      */
@@ -34,7 +33,7 @@ class IndexController extends AbstractActionController
      * To see how we configure the controller to use DI
      * check out tests/resources/config/module.config.php
      *
-     * @param ImageThumb $thumbnailer
+     * @param ImageThumb|object $thumbnailer
      */
     public function __construct(ImageThumb $thumbnailer)
     {

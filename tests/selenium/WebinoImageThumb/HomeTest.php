@@ -19,7 +19,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testReflection()
     {
-        $src = file_get_contents($this->uri . 'application/index-controller/reflection');
+        $src = file_get_contents($this->uri . 'application/demo/reflection');
         $this->assertJpegImage($src);
     }
 
@@ -28,7 +28,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testWhitespaceCropper()
     {
-        $src = file_get_contents($this->uri . 'application/index-controller/whitespace-cropper');
+        $src = file_get_contents($this->uri . 'application/demo/whitespace-cropper');
         $this->assertJpegImage($src);
     }
 
@@ -37,7 +37,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testSharpen()
     {
-        $src = file_get_contents($this->uri . 'application/index-controller/sharpen');
+        $src = file_get_contents($this->uri . 'application/demo/sharpen');
         $this->assertJpegImage($src);
     }
 }

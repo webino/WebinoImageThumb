@@ -14,9 +14,9 @@ Service that provides API to manipulate images.
 
 - Powered by [PHPThumb](https://github.com/masterexploder/PHPThumb)
 - Demo [webino-image-thumb.demo.webino.org](http://webino-image-thumb.demo.webino.org/)
-  - [Reflection](http://webino-image-thumb.demo.webino.org/application/index/reflection)
-  - [Whitespace cropper](http://webino-image-thumb.demo.webino.org/application/index/whitespace-cropper)
-  - [Sharpen](http://webino-image-thumb.demo.webino.org/application/index/sharpen)
+  - [Reflection](http://webino-image-thumb.demo.webino.org/application/demo/reflection)
+  - [Whitespace cropper](http://webino-image-thumb.demo.webino.org/application/demo/whitespace-cropper)
+  - [Sharpen](http://webino-image-thumb.demo.webino.org/application/demo/sharpen)
 
 ## Features
 

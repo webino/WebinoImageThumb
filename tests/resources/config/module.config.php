@@ -7,7 +7,10 @@
  * @license   BSD-3-Clause
  */
 
-use Application\Controller\IndexController;
+namespace Application;
+
+use Application\Controller;
+use Application\Factory;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\I18n\Translator\TranslatorServiceFactory;
 
@@ -20,46 +23,13 @@ use Zend\I18n\Translator\TranslatorServiceFactory;
  */
 return [
     'service_manager' => [
-        'aliases' => [
-            'Application\Controller\Index' => IndexController::class,
-        ],
         'factories' => [
             TranslatorInterface::class => TranslatorServiceFactory::class,
         ],
     ],
-    'router' => [
-        'routes' => [
-            'home' => [
-                'options' => [
-                    'defaults' => [
-                        /**
-                         * We want to use the DI, so override the application
-                         * module config with a controller FQCN, instead of invocable alias
-                         */
-                        'controller' => IndexController::class,
-                    ],
-                ],
-            ],
-        ],
-    ],
-    'di' => [
-        /**
-         * For security reasons we must allow
-         * our controller for the DI
-         */
-        'allowed_controllers' => [
-            IndexController::class,
-        ],
-        'instance' => [
-            /**
-             * Configure the controller
-             * to inject WebinoImageThumb service
-             */
-            IndexController::class => [
-                'parameters' => [
-                    'thumbnailer' => 'WebinoImageThumb',
-                ],
-            ],
+    'controllers' => [
+        'factories' => [
+            'Application\Controller\Demo' => Factory\DemoControllerFactory::class,
         ],
     ],
     'webino_debug' => [
