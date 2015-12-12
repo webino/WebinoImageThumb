@@ -17,6 +17,7 @@ Service that provides API to manipulate images.
   - [Reflection](http://webino-image-thumb.demo.webino.org/application/demo/reflection)
   - [Whitespace cropper](http://webino-image-thumb.demo.webino.org/application/demo/whitespace-cropper)
   - [Sharpen](http://webino-image-thumb.demo.webino.org/application/demo/sharpen)
+  - [Watermark](http://webino-image-thumb.demo.webino.org/application/demo/watermark)
 
 ## Features
 
@@ -24,6 +25,7 @@ Service that provides API to manipulate images.
   - Create image reflection
   - Crop whitespace
   - Sharpen images
+  - Watermark
 
 ## Setup
 
@@ -67,6 +69,13 @@ Service that provides API to manipulate images.
 
         $sharpen = $thumbnailer->createSharpen();
         $thumb   = $thumbnailer->create($imagePath, [], [$sharpen]);
+
+  - Use watermark plugin:
+
+        $watermarkPath  = 'public/images/my_watermark.png';
+        $watermarkThumb = $this->thumbnailer->create($watermarkFile);
+        $watermark      = $this->thumbnailer->createWatermark($watermarkThumb,[30,30]);
+        $thumb          = $this->thumbnailer->create($image, [], [$watermark]);
 
 ## Options
 
@@ -185,6 +194,14 @@ Service that provides API to manipulate images.
     * `$margin` - What pixels of a margin should be around the original image.
     * `$color`  - The hex value of the color you would like to crop.
 
+## Watermark plugin
+
+  * `createWatermark(PHPThumb $watermarkThumb, $position = [0, 0])`
+
+    * `$watermarkThumb` - What pixels of a margin should be around the original image.
+    * `$position`  - Position of watermark, X and Y from the left bottom corner.
+
+
 ## Changelog
 
 ### 2.0.0 [UNRELEASED]
@@ -193,6 +210,7 @@ Service that provides API to manipulate images.
   - Added Whitespace Cropper plugin
   - Added Sharpen plugin
   - Removed ZF autoloader support
+  - Added Watermark plugin
 
 ### 1.0.0
 

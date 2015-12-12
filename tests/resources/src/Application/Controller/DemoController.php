@@ -9,6 +9,7 @@
 
 namespace Application\Controller;
 
+use PHPThumb\PHPThumb;
 use WebinoImageThumb\Service\ImageThumb;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -87,6 +88,29 @@ class DemoController extends AbstractActionController
             ->resize(200, 200)
             ->show()
             ->save('public/sharpen_test.jpg');
+
+        return false;
+    }
+
+    /**
+     * Save and show an image with watermark
+     */
+    public function watermarkAction()
+    {
+        $watermarkPath  = __DIR__ . '/../../../data/media/watermark.png';
+        $image     = __DIR__ . '/../../../data/media/test.jpg';
+
+        $watermarkThumb = $this->thumbnailer->create($watermarkPath);
+        $watermarkThumb
+            ->resize(100, 100);
+
+        $watermark = $this->thumbnailer->createWatermark($watermarkThumb,[30,30]);
+        $thumb     = $this->thumbnailer->create($image, [], [$watermark]);
+
+        $thumb
+            ->resize(200, 200)
+            ->show()
+            ->save('public/watermark_test.jpg');
 
         return false;
     }

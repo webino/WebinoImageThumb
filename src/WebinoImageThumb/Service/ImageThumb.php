@@ -79,4 +79,16 @@ class ImageThumb
     {
         return new ExtraPlugins\Sharpen($offset, $matrix);
     }
+
+    /**
+     * Create a watermark on image
+     *
+     * @param int $watermark
+     * @param array $position
+     * @return ExtraPlugins\Watermark
+     */
+    public function createWatermark($watermarkThumb, array $position = [0,0])
+    {
+        return new ExtraPlugins\Watermark($watermarkThumb, $position);
+    }
 }

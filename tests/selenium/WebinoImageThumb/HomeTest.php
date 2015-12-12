@@ -40,4 +40,13 @@ class HomeTest extends AbstractTestCase
         $src = file_get_contents($this->uri . 'application/demo/sharpen');
         $this->assertJpegImage($src);
     }
+
+    /**
+     * Watermark plugin test
+     */
+    public function testWatermark()
+    {
+        $src = file_get_contents($this->uri . 'application/demo/watermark');
+        $this->assertJpegImage($src);
+    }
 }
