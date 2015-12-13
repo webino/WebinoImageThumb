@@ -73,9 +73,9 @@ Service that provides API to manipulate images.
   - Use watermark plugin:
 
         $watermarkPath  = 'public/images/my_watermark.png';
-        $watermarkThumb = $this->thumbnailer->create($watermarkFile);
-        $watermark      = $this->thumbnailer->createWatermark($watermarkThumb,[30,30]);
-        $thumb          = $this->thumbnailer->create($image, [], [$watermark]);
+        $watermarkThumb = $thumbnailer->create($watermarkPath);
+        $watermark      = $thumbnailer->createWatermark($watermarkThumb, [30, 30]);
+        $thumb          = $thumbnailer->create($imagePath, [], [$watermark]);
 
 ## Options
 
