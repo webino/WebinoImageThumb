@@ -198,7 +198,7 @@ Service that provides API to manipulate images.
 
   * `createWatermark(PHPThumb $watermarkThumb, $position = [0, 0])`
 
-    * `$watermarkThumb` - What pixels of a margin should be around the original image.
+    * `$watermarkThumb` - Watermark image from watermark file.
     * `$position`  - Position of watermark, X and Y from the left bottom corner.
 
 
