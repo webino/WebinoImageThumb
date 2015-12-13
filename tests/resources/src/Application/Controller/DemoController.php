@@ -98,13 +98,12 @@ class DemoController extends AbstractActionController
     public function watermarkAction()
     {
         $watermarkPath  = __DIR__ . '/../../../data/media/watermark.png';
-        $image     = __DIR__ . '/../../../data/media/test.jpg';
+        $image          = __DIR__ . '/../../../data/media/test.jpg';
 
         $watermarkThumb = $this->thumbnailer->create($watermarkPath);
-        $watermarkThumb
-            ->resize(100, 100);
+        $watermarkThumb->resize(100, 100);
 
-        $watermark = $this->thumbnailer->createWatermark($watermarkThumb,[30,30]);
+        $watermark = $this->thumbnailer->createWatermark($watermarkThumb, [30, 30]);
         $thumb     = $this->thumbnailer->create($image, [], [$watermark]);
 
         $thumb
