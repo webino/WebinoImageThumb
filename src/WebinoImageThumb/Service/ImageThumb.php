@@ -83,11 +83,11 @@ class ImageThumb
     /**
      * Create a watermark on image
      *
-     * @param int $watermark
+     * @param PHPThumb $watermarkThumb
      * @param array $position
      * @return ExtraPlugins\Watermark
      */
-    public function createWatermark($watermarkThumb, array $position = [0,0])
+    public function createWatermark(PHPThumb $watermarkThumb, array $position = [0, 0])
     {
         return new ExtraPlugins\Watermark($watermarkThumb, $position);
     }
