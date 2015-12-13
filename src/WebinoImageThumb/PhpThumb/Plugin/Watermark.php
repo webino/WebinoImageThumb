@@ -19,21 +19,20 @@ use PHPThumb\GD as PHPThumb;
 class Watermark implements \PHPThumb\PluginInterface
 {
     /**
-     * @var int
+     * @var PHPThumb $watermarkThumb
      */
     protected $watermarkThumb;
 
     /**
-     * @var int
+     * @var array $position
      */
     protected $position = [0, 0];
 
     /**
-     * Watermark constructor
-     * @param int $watermark
-     * @param int $position
+     * @param PHPThumb $watermarkThumb
+     * @param array $position
      */
-    public function __construct($watermarkThumb, $position)
+    public function __construct(PHPThumb $watermarkThumb, $position = [0, 0])
     {
         $this->watermarkThumb = $watermarkThumb;
         $this->position = $position;
@@ -46,32 +45,26 @@ class Watermark implements \PHPThumb\PluginInterface
      */
     public function execute($phpthumb)
     {
-
         $currentDimensions = $phpthumb->getCurrentDimensions();
         $height            = $currentDimensions['height'];
         $oldImage          = $phpthumb->getOldImage();
-        $watermarkThumb    = $this->watermarkThumb->getOldImage();
+        $watermarkImage    = $this->watermarkThumb->getOldImage();
 
         $watermarkCurrentDimensions = $this->watermarkThumb->getCurrentDimensions();
         $watermarkWidth             = $watermarkCurrentDimensions['width'];
         $watermarkHeight            = $watermarkCurrentDimensions['height'];
-
-        $position[0] = $this->position[0];
-        $position[1] = $this->position[1];
-        $positionY   = ($height-$watermarkHeight)-$position[1];
+        $positionY                  = ($height - $watermarkHeight) - $this->position[1];
 
         imagecopy(
             $oldImage,
-            $watermarkThumb,
-            $position[0],
+            $watermarkImage,
+            $this->position[0],
             $positionY,
             0,
             0,
             $watermarkWidth,
             $watermarkHeight
         );
-
-        $phpthumb->setWorkingImage($oldImage);
 
         return $phpthumb;
     }
