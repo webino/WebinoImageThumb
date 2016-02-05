@@ -4,7 +4,7 @@
  * Webino (https://github.com/webino/)
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
- * @copyright Copyright (c) 2013-2015 Webino, s. r. o. (http://webino.sk/)
+ * @copyright Copyright (c) 2013-2016 Webino, s. r. o. (http://webino.sk/)
  * @license   BSD-3-Clause
  */
 
@@ -85,10 +85,11 @@ class ImageThumb
      *
      * @param PHPThumb $watermarkThumb
      * @param array $position
+     * @param float $scale
      * @return ExtraPlugins\Watermark
      */
-    public function createWatermark(PHPThumb $watermarkThumb, array $position = [0, 0])
+    public function createWatermark(PHPThumb $watermarkThumb, array $position = [0, 0], $scale = .5)
     {
-        return new ExtraPlugins\Watermark($watermarkThumb, $position);
+        return new ExtraPlugins\Watermark($watermarkThumb, $position, $scale);
     }
 }

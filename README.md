@@ -74,7 +74,7 @@ Service that provides API to manipulate images.
 
         $watermarkPath  = 'public/images/my_watermark.png';
         $watermarkThumb = $thumbnailer->create($watermarkPath);
-        $watermark      = $thumbnailer->createWatermark($watermarkThumb, [30, 30]);
+        $watermark      = $thumbnailer->createWatermark($watermarkThumb);
         $thumb          = $thumbnailer->create($imagePath, [], [$watermark]);
 
 ## Options
@@ -196,10 +196,16 @@ Service that provides API to manipulate images.
 
 ## Watermark plugin
 
-  * `createWatermark(PHPThumb $watermarkThumb, $position = [0, 0])`
+  * `createWatermark(PHPThumb $watermarkThumb, $position = [0, 0], $scale = .5)`
 
     * `$watermarkThumb` - Watermark image from watermark file.
-    * `$position`  - Position of watermark, X and Y from the left bottom corner.
+    * `$position`  - Position of watermark, center by default:
+        * `[0, 0]`   - center
+        * `[-1, -1]` - left bottom
+        * `[-1, 1]`  - left top
+        * `[1, 1]`   - right top
+        * `[1, -1]`  - right bottom
+    * `$scale` - Scale of the watermark relative to the image.
 
 
 ## Changelog

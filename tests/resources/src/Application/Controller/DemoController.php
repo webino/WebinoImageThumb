@@ -103,7 +103,7 @@ class DemoController extends AbstractActionController
         $watermarkThumb = $this->thumbnailer->create($watermarkPath);
         $watermarkThumb->resize(100, 100);
 
-        $watermark = $this->thumbnailer->createWatermark($watermarkThumb, [30, 30]);
+        $watermark = $this->thumbnailer->createWatermark($watermarkThumb, [-1, -1], .3);
         $thumb     = $this->thumbnailer->create($image, [], [$watermark]);
 
         $thumb
