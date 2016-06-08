@@ -7,13 +7,13 @@
  * @license   New BSD License
  */
 
-use WebinoImageThumb\Service\ImageThumb;
+namespace WebinoImageThumb;
 
 /**
  * Do not write your custom settings into this file
  */
 return [
-    // TODO deprecated DI config, use factories
+    // TODO deprecated DI config, remove
     'di' => [
         'definition' => [
             'compiler' => [
@@ -22,8 +22,13 @@ return [
         ],
         'instance' => [
             'alias' => [
-               'WebinoImageThumb' => ImageThumb::class,
+               'WebinoImageThumb' => Service\ImageThumb::class,
            ],
+        ],
+    ],
+    'service_manager' => [
+        'invokables' => [
+            'WebinoImageThumb' => Service\ImageThumb::class,
         ],
     ],
 ];

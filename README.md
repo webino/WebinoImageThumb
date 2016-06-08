@@ -217,6 +217,7 @@ Service that provides API to manipulate images.
   - Added Sharpen plugin
   - Removed ZF autoloader support
   - Added Watermark plugin
+  - Added ImageThumbAwareInterface & Trait
 
 ### 1.0.0
 
