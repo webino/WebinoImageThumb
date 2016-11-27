@@ -1,6 +1,5 @@
 language: php
 php:
-  - 5.5
   - 5.6
   - 7.0
 matrix:
@@ -14,11 +13,13 @@ before_script:
   - curl -s https://get.webino.org/support/travis/before-script | sh
 script:
   - curl -s https://get.webino.org/support/travis/script | sh
+after_failure:
+  - curl -s https://get.webino.org/support/travis/after-failure | sh
 after_success:
   - curl -s https://get.webino.org/support/travis/after-success | sh
 env:
   global:
   - URI=http://localhost:8000/
-  - BROWSER=chrome
+  - BROWSER=firefox
   - GH_REF=github.com/webino/WebinoImageThumb
   - secure: VZgx4p0JeH4l8m9mziiH01694NwZY0r0SEaeZO28595UsvyafWJWLwhPPe4x7nqKm2Cvd79qY/yfuWiPh7KwIC+M47p2PyF/wrT7nPTCBod4p/ZBGJk8ISufILmy3mPZXQ25Mhn/yD82MzjloJVKX/JI06MZH70AtkCPgPUMnc8=

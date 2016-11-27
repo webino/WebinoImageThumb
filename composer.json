@@ -4,7 +4,7 @@
     "homepage":    "https://github.com/webino/WebinoImageThumb",
     "type":        "library",
     "license":     "BSD-3-Clause",
-    "keywords":   ["webino", "image", "thumb", "zf2", "zend", "framework"],
+    "keywords":    ["webino", "image", "thumb", "zf2", "zend", "framework"],
     "authors": [
         {
             "name":     "Webino, s. r. o.",
@@ -22,7 +22,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=5.5",
+        "php": ">=5.6",
         "ext-gd": "*",
         "masterexploder/PHPThumb": "2.*",
         "zendframework/zend-di": "2.*"
@@ -44,5 +44,10 @@
     },
     "autoload": {
         "psr-0": {"WebinoImageThumb": "src/"}
+    },
+    "extra": {
+        "webino-devkit": {
+            "ZendSkeletonApplication": "release-2.2.8"
+        }
     }
 }

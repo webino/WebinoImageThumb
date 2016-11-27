@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/webino/WebinoImageThumb.png?branch=develop)](http://travis-ci.org/webino/WebinoImageThumb "Develop Build Status")
 [![Coverage Status](https://coveralls.io/repos/webino/WebinoImageThumb/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoImageThumb?branch=develop "Develop Coverage Status")
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/badges/quality-score.png?s=b3ef629e7e8eaafe1dd8d70128958c2718dd8579)](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/ "Quality Score")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/webino/WebinoImageThumb/?branch=develop "Quality Score")
 [![Dependency Status](https://www.versioneye.com/user/projects/529f9724632bac57310000b6/badge.png)](https://www.versioneye.com/user/projects/529f9724632bac57310000b6 "Develop Dependency Status")
 <br />
 [![Latest Stable Version](https://poser.pugx.org/webino/webino-image-thumb/v/stable.png)](https://packagist.org/packages/webino/webino-image-thumb "Latest Stable Version")
@@ -36,6 +36,7 @@ Service that provides API to manipulate images.
 
 ## Requirements
 
+  - PHP >= 5.6
   - GD 2.0+
 
 ## QuickStart
@@ -212,6 +213,7 @@ Service that provides API to manipulate images.
 
 ### 2.0.0 [UNRELEASED]
 
+  - PHP >= 5.6
   - Requires PHPThumb 2.0 via composer
   - Added Whitespace Cropper plugin
   - Added Sharpen plugin
