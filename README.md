@@ -211,6 +211,10 @@ Service that provides API to manipulate images.
 
 ## Changelog
 
+### 3.0.0  [UNRELEASED]
+
+  - Removed deprecated plugin classes
+
 ### 2.1.0
 
   - Requires webino/thumbnailer replacing masterexploder/PHPThumb
