@@ -1,38 +1,17 @@
 #!/usr/bin/env php
 <?php
+/**
+ * Webino (http://webino.sk/)
+ *
+ * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
+ * @copyright   Copyright (c) 2013-2015 Webino, s. r. o. (http://webino.sk/)
+ * @license     BSD-3-Clause
+ */
 
-use Zend\Code\Scanner\FileScanner as CodeFileScanner;
-use Zend\Di\Definition\CompilerDefinition;
+namespace WebinoImageThumb;
 
-// Autoloader
-$vendorDirname = __DIR__ . '/../._test/ZendSkeletonApplication/vendor';
-$loader = require $vendorDirname . '/autoload.php';
+use WebinoDev\Di\Definition\Generator;
 
-$loader->add('WebinoImageThumb', __DIR__ . '/../src');
-
-// Compile Di Definition
-$diCompiler = new CompilerDefinition;
-
-$diCompiler->addDirectory(__DIR__ . '/../src');
-
-foreach (array(
-
-    // add files
-//    $vendorDirname . '/zendframework/zendframework/library/Zend/.php',
-
-) as $file) {
-    $diCompiler->addCodeScannerFile(new CodeFileScanner($file));
-}
-
-$diCompiler->compile();
-
-$definition = $diCompiler->toArrayDefinition()->toArray();
-
-$dir = __DIR__ . '/../data/di';
-
-is_dir($dir) or mkdir($dir);
-
-file_put_contents(
-    $dir . '/definition.php',
-    '<?php ' . PHP_EOL . 'return ' . var_export($definition, true) . ';' . PHP_EOL
-);
+require __DIR__ . '/../tests/resources/init_autoloader.php';
+(new Generator(__DIR__))->compile()->dump();
+(new Generator(__DIR__ . '/../tests/resources/src'))->compile()->dump();

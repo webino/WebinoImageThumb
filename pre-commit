@@ -1,6 +1,6 @@
 # pre-commit
 git stash -q --keep-index
-phing pre-commit
+webino precommit
 RESULT=$?
 env -i
 git stash pop -q

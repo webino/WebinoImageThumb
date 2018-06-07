@@ -1,42 +1,53 @@
 {
-    "name": "webino/webino-image-thumb",
+    "name":        "webino/webino-image-thumb",
     "description": "Image Thumbnailer for Zend Framework 2",
-    "type": "library",
-    "keywords": [
-        "webino", "image", "thumb", "zf2", "zend", "framework"
-    ],
-    "homepage": "https://github.com/webino/WebinoImageThumb",
-    "license": "New BSD License",
+    "homepage":    "https://github.com/webino/WebinoImageThumb",
+    "type":        "library",
+    "license":     "BSD-3-Clause",
+    "keywords":    ["webino", "image", "thumb", "zf2", "zend", "framework"],
     "authors": [
         {
-            "name": "Peter Bačinský",
-            "email": "peter@bacinsky.sk",
-            "homepage": "http://www.bacinsky.sk/",
-            "role": "Developer"
+            "name":     "Webino, s. r. o.",
+            "email":    "info@webino.sk",
+            "homepage": "http://webino.sk",
+            "role":     "Developer"
+        },
+        {
+            "name":     "Peter Bacinsky",
+            "email":    "peter@bacinsky.sk",
+            "homepage": "http://bacinsky.sk",
+            "role":     "Developer"
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "php": ">=5.3.3",
-        "masterexploder/PHPThumb": "2.*"
+        "php": ">=5.6",
+        "ext-gd": "*",
+        "masterexploder/PHPThumb": "2.*",
+        "zendframework/zend-di": "2.*"
     },
     "suggest": {
-        "zendframework/zend-modulemanager": "To use it as Zend Framework module"
+        "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
     },
     "require-dev": {
-        "apigen/apigen": "2.*",
-        "mayflower/php-codebrowser": "*",
-        "pdepend/pdepend": "1.*",
-        "phploc/phploc": "*",
-        "phpmd/phpmd": "1.*",
-        "phpunit/phpunit": "3.7.*",
-        "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "1.*",
-        "zendframework/zendframework": "2.*"
+        "webino/webino-dev": "dev-develop",
+        "webino/webino-debug": "dev-develop",
+        "zendframework/zend-modulemanager": "2.*",
+        "zendframework/zend-version": "2.*",
+        "zendframework/zend-console": "2.*",
+        "zendframework/zend-loader": "2.*",
+        "zendframework/zend-http": "2.*",
+        "zendframework/zend-log": "2.*",
+        "zendframework/zend-mvc": "2.*",
+        "zendframework/zend-view": "2.*"
     },
     "autoload": {
-        "psr-0": {
-            "WebinoImageThumb": "src/"
+        "psr-0": {"WebinoImageThumb": "src/"}
+    },
+    "extra": {
+        "webino-devkit": {
+            "ZendSkeletonApplication": "release-2.2.8"
         }
     }
 }
