@@ -211,7 +211,7 @@ Service that provides API to manipulate images.
 
 ## Changelog
 
-### 2.0.0 [UNRELEASED]
+### 2.0.0
 
   - PHP >= 5.6
   - Requires PHPThumb 2.0 via composer
