@@ -4,7 +4,7 @@
  * Webino (https://github.com/webino/)
  *
  * @link      https://github.com/webino/WebinoImageThumb/ for the canonical source repository
- * @copyright Copyright (c) 2013-2016 Webino, s. r. o. (http://webino.sk/)
+ * @copyright Copyright (c) 2013-2018 Webino, s. r. o. (http://webino.sk/)
  * @license   BSD-3-Clause
  */
 
@@ -13,7 +13,6 @@ namespace WebinoImageThumb\Service;
 use PHPThumb\Plugins;
 use PHPThumb\GD as PHPThumb;
 use WebinoImageThumb\Exception;
-use WebinoImageThumb\PhpThumb\Plugin as ExtraPlugins;
 
 /**
  * Image Thumbnailer service
@@ -61,11 +60,11 @@ class ImageThumb
      *
      * @param int $border
      * @param int $color
-     * @return ExtraPlugins\WhitespaceCropper
+     * @return Plugins\WhitespaceCropper
      */
     public function createWhitespaceCropper($border = 0, $color = 0)
     {
-        return new ExtraPlugins\WhitespaceCropper($border, $color);
+        return new Plugins\WhitespaceCropper($border, $color);
     }
 
     /**
@@ -73,11 +72,11 @@ class ImageThumb
      *
      * @param int $offset
      * @param array $matrix
-     * @return ExtraPlugins\Sharpen
+     * @return Plugins\Sharpen
      */
     public function createSharpen($offset = 0, array $matrix = [])
     {
-        return new ExtraPlugins\Sharpen($offset, $matrix);
+        return new Plugins\Sharpen($offset, $matrix);
     }
 
     /**
@@ -86,10 +85,10 @@ class ImageThumb
      * @param PHPThumb $watermarkThumb
      * @param array $position
      * @param float $scale
-     * @return ExtraPlugins\Watermark
+     * @return Plugins\Watermark
      */
     public function createWatermark(PHPThumb $watermarkThumb, array $position = [0, 0], $scale = .5)
     {
-        return new ExtraPlugins\Watermark($watermarkThumb, $position, $scale);
+        return new Plugins\Watermark($watermarkThumb, $position, $scale);
     }
 }
