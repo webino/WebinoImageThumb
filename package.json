@@ -1,7 +1,0 @@
-{
-    "devDependencies": {
-        "grunt": "0.4.*",
-        "grunt-cli": "0.1.*",
-        "shelljs": "~0.3"
-    }
-}
