@@ -20,11 +20,11 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true,
+    "prefer-stable": false,
     "require": {
         "php": ">=5.6",
         "ext-gd": "*",
-        "masterexploder/PHPThumb": "2.*",
+        "webino/thumbnailer": "dev-develop",
         "zendframework/zend-di": "2.*"
     },
     "suggest": {
