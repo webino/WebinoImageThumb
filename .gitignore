@@ -8,6 +8,5 @@
 .settings
 nbproject
 node_modules
-composer.lock
 composer.phar
 !.gitignore
